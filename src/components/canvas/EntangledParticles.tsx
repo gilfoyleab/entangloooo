@@ -25,7 +25,7 @@ function generateLumpySphere(count: number, radius: number, noiseAmp: number) {
   return positions;
 }
 
-export function EntangledParticles() {
+export function EntangledParticles({ scrollProgress }: { scrollProgress?: number }) {
   const groupRef = useRef<THREE.Group>(null);
   const blueSphereRef = useRef<THREE.Points>(null);
   const redSphereRef = useRef<THREE.Points>(null);
