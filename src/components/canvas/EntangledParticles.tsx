@@ -2,105 +2,210 @@
 
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
+import { Float, Sphere, Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Helper to generate sphere particles
-function generateSphereParticles(count: number, radius: number) {
-  const positions = new Float32Array(count * 3);
-  for (let i = 0; i < count; i++) {
-    const theta = Math.random() * 2 * Math.PI;
-    const phi = Math.acos((Math.random() * 2) - 1);
-    const x = radius * Math.sin(phi) * Math.cos(theta);
-    const y = radius * Math.sin(phi) * Math.sin(theta);
-    const z = radius * Math.cos(phi);
-    positions[i * 3] = x;
-    positions[i * 3 + 1] = y;
-    positions[i * 3 + 2] = z;
-  }
-  return positions;
+const COLOR_CYAN = "#00d2ff";
+const COLOR_MAGENTA = "#ff1a66";
+
+// A glowing, turbulent cosmic core
+function CosmicCore({ position, color, reverse }: { position: [number, number, number], color: string, reverse?: boolean }) {
+  const ref = useRef<THREE.Group>(null);
+  
+  useFrame((state, delta) => {
+    if (ref.current) {
+      ref.current.rotation.x += delta * (reverse ? -0.4 : 0.4);
+      ref.current.rotation.y += delta * (reverse ? -0.6 : 0.6);
+      ref.current.rotation.z += delta * 0.2;
+      
+      // Heartbeat pulse over time
+      const scale = 1 + Math.sin(state.clock.elapsedTime * 2 + (reverse ? Math.PI : 0)) * 0.08;
+      ref.current.scale.setScalar(scale);
+    }
+  });
+
+  return (
+    <Float speed={3} rotationIntensity={2} floatIntensity={3} position={position}>
+      <group ref={ref}>
+        {/* Intense solid inner core */}
+        <Sphere args={[1.2, 64, 64]}>
+          <meshStandardMaterial color={color} emissive={color} emissiveIntensity={4} toneMapped={false} />
+        </Sphere>
+        
+        {/* Outer chaotic wireframe sphere */}
+        <Sphere args={[1.5, 32, 32]}>
+          <meshStandardMaterial 
+            color={color} 
+            emissive={color} 
+            emissiveIntensity={2} 
+            wireframe 
+            transparent 
+            opacity={0.5} 
+            blending={THREE.AdditiveBlending}
+            toneMapped={false} 
+          />
+        </Sphere>
+
+        {/* Secondary tilted wireframe core */}
+        <Sphere args={[1.8, 24, 24]} rotation={[Math.PI / 4, Math.PI / 4, 0]}>
+          <meshStandardMaterial 
+            color="#ffffff" 
+            emissive={color} 
+            emissiveIntensity={1.5} 
+            wireframe 
+            transparent 
+            opacity={0.3} 
+            blending={THREE.AdditiveBlending}
+            toneMapped={false}
+          />
+        </Sphere>
+      </group>
+    </Float>
+  );
 }
 
-export function EntangledParticles({ scrollProgress }: { scrollProgress: number }) {
-  const groupRef = useRef<THREE.Group>(null);
-  const blueSphereRef = useRef<THREE.Points>(null);
-  const redSphereRef = useRef<THREE.Points>(null);
-  const ringsRef = useRef<THREE.Group>(null);
+// Generates the entangled connections between the two cosmos
+function Connections() {
+  const linesCount = 80;
+  const curves = useMemo(() => {
+    return Array.from({ length: linesCount }).map(() => {
+      // Start near the left core, end near the right core
+      const start = new THREE.Vector3(-3.5 + (Math.random()-0.5), (Math.random()-0.5)*2, (Math.random()-0.5)*2);
+      const end = new THREE.Vector3(3.5 + (Math.random()-0.5), (Math.random()-0.5)*2, (Math.random()-0.5)*2);
+      
+      // Chaotic control points in the middle
+      const mid1 = new THREE.Vector3(-1.5, (Math.random()-0.5)*6, (Math.random()-0.5)*6);
+      const mid2 = new THREE.Vector3(1.5, (Math.random()-0.5)*6, (Math.random()-0.5)*6);
+      
+      return new THREE.CatmullRomCurve3([start, mid1, mid2, end]);
+    });
+  }, []);
 
-  const particleCount = 3000;
-  const radius = 1.2;
+  return (
+    <group>
+      {curves.map((curve, i) => (
+        <mesh key={i}>
+          <tubeGeometry args={[curve, 100, 0.01 + Math.random()*0.02, 4, false]} />
+          <meshBasicMaterial 
+            color={Math.random() > 0.5 ? COLOR_CYAN : COLOR_MAGENTA} 
+            transparent 
+            opacity={0.15 + Math.random() * 0.25} 
+            blending={THREE.AdditiveBlending} 
+            toneMapped={false}
+          />
+        </mesh>
+      ))}
+      <EnergyPulses curves={curves} />
+    </group>
+  );
+}
+
+// Shimmering light pulses traveling along the curves
+function EnergyPulses({ curves }: { curves: THREE.Curve<THREE.Vector3>[] }) {
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  const dummy = new THREE.Object3D();
   
-  const bluePositions = useMemo(() => generateSphereParticles(particleCount, radius), []);
-  const redPositions = useMemo(() => generateSphereParticles(particleCount, radius), []);
+  const properties = useMemo(() => curves.map(() => ({
+    progress: Math.random(),
+    speed: 0.1 + Math.random() * 0.4,
+    direction: Math.random() > 0.5 ? 1 : -1
+  })), [curves]);
+
+  useFrame((state, delta) => {
+    if (!meshRef.current) return;
+    
+    for (let i = 0; i < curves.length; i++) {
+        const prop = properties[i];
+        prop.progress = (prop.progress + prop.speed * prop.direction * delta) % 1;
+        if (prop.progress < 0) prop.progress += 1; // Wrap around for negative direction
+
+        const pos = curves[i].getPoint(prop.progress);
+        dummy.position.copy(pos);
+        
+        // Pulse gets bigger in the middle of the entanglement
+        const scale = 1 + Math.sin(prop.progress * Math.PI) * 2;
+        dummy.scale.setScalar(scale);
+        dummy.updateMatrix();
+        
+        meshRef.current.setMatrixAt(i, dummy.matrix);
+    }
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  });
+
+  return (
+    <instancedMesh ref={meshRef} args={[undefined, undefined, curves.length]}>
+      <sphereGeometry args={[0.06, 16, 16]} />
+      <meshBasicMaterial color="#ffffff" toneMapped={false} />
+    </instancedMesh>
+  );
+}
+
+// Background swirling dusty particles
+function CosmicDust() {
+    const count = 15000;
+    const positions = useMemo(() => {
+        const p = new Float32Array(count * 3);
+        const radius = 25;
+        for(let i=0; i<count; i++) {
+            p[i*3] = (Math.random() - 0.5) * radius;
+            p[i*3+1] = (Math.random() - 0.5) * radius;
+            p[i*3+2] = (Math.random() - 0.5) * radius * 0.5; // Flatter z-depth
+        }
+        return p;
+    }, []);
+
+    const colors = useMemo(() => {
+        const c = new Float32Array(count * 3);
+        const color1 = new THREE.Color(COLOR_CYAN);
+        const color2 = new THREE.Color(COLOR_MAGENTA);
+        for(let i=0; i<count; i++) {
+            // Mix colors based on random position
+            const mixed = Math.random() > 0.5 ? color1 : color2;
+            mixed.toArray(c, i * 3);
+        }
+        return c;
+    }, []);
+
+    const ref = useRef<THREE.Points>(null);
+    useFrame((_, delta) => {
+        if(ref.current) {
+            ref.current.rotation.y += delta * 0.03;
+            ref.current.rotation.z -= delta * 0.01;
+        }
+    });
+
+    return (
+        <Points ref={ref} positions={positions} colors={colors}>
+            <PointMaterial 
+                transparent 
+                vertexColors 
+                size={0.06} 
+                sizeAttenuation 
+                depthWrite={false} 
+                blending={THREE.AdditiveBlending} 
+                opacity={0.4}
+            />
+        </Points>
+    );
+}
+
+export function EntangledParticles() {
+  const groupRef = useRef<THREE.Group>(null);
 
   useFrame((state, delta) => {
     if (groupRef.current) {
-      // Base slow rotation
-      groupRef.current.rotation.y += delta * 0.1;
-      groupRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.2) * 0.2;
-      
-      // Rotate based on scroll
-      groupRef.current.rotation.y += (scrollProgress * Math.PI * 2 - groupRef.current.rotation.y) * 0.1;
-      
-      // Zoom effect based on scroll
-      const targetZ = scrollProgress * 5;
-      groupRef.current.position.z += (targetZ - groupRef.current.position.z) * 0.1;
-    }
-
-    if (blueSphereRef.current) {
-      blueSphereRef.current.rotation.x -= delta * 0.15;
-      blueSphereRef.current.rotation.y += delta * 0.2;
-    }
-    if (redSphereRef.current) {
-      redSphereRef.current.rotation.x += delta * 0.15;
-      redSphereRef.current.rotation.y -= delta * 0.2;
-    }
-    if (ringsRef.current) {
-      ringsRef.current.rotation.z += delta * 0.5;
-      ringsRef.current.rotation.x = Math.PI / 2 + Math.sin(state.clock.elapsedTime * 0.5) * 0.2;
+      // Very slow majestic wobble of the entire entangled system
+      groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.2) * 0.3;
+      groupRef.current.rotation.z = Math.cos(state.clock.elapsedTime * 0.15) * 0.1;
     }
   });
 
   return (
     <group ref={groupRef}>
-      {/* Blue / Cyan Particle Sphere */}
-      <Points ref={blueSphereRef} positions={bluePositions} position={[-2, 0, 0]}>
-        <PointMaterial
-          transparent
-          color="#00d2ff"
-          size={0.02}
-          sizeAttenuation={true}
-          depthWrite={false}
-          blending={THREE.AdditiveBlending}
-        />
-      </Points>
-
-      {/* Red / Magenta Particle Sphere */}
-      <Points ref={redSphereRef} positions={redPositions} position={[2, 0, 0]}>
-        <PointMaterial
-          transparent
-          color="#ff1a66"
-          size={0.02}
-          sizeAttenuation={true}
-          depthWrite={false}
-          blending={THREE.AdditiveBlending}
-        />
-      </Points>
-
-      {/* Connecting Energy Waves / Rings */}
-      <group ref={ringsRef}>
-        {[0, 1, 2, 3].map((i) => (
-          <mesh key={i} rotation={[0, 0, (Math.PI / 4) * i]}>
-            <torusGeometry args={[3, 0.01, 16, 100]} />
-            <meshBasicMaterial 
-              color={i % 2 === 0 ? "#00d2ff" : "#ff1a66"} 
-              transparent 
-              opacity={0.3} 
-              blending={THREE.AdditiveBlending} 
-            />
-          </mesh>
-        ))}
-      </group>
+      <CosmicCore position={[-3.5, 0, 0]} color={COLOR_CYAN} />
+      <CosmicCore position={[3.5, 0, 0]} color={COLOR_MAGENTA} reverse />
+      <Connections />
+      <CosmicDust />
     </group>
   );
 }
