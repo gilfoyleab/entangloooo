@@ -52,8 +52,8 @@ export function EntangledParticles() {
       groupRef.current.rotation.y += delta * (0.08 + scroll * 0.1);
       groupRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.05;
       
-      // Zoom in on scroll, but not so much that it causes overflow
-      groupRef.current.position.z = scroll * 1.2;
+      // Zoom in on scroll, but slightly less so it feels a bit smaller
+      groupRef.current.position.z = scroll * 0.7;
     }
     
     // Calculate safe pull distance based on screen size so it stays within frame
