@@ -6,22 +6,7 @@ import { Network, Shield, Zap, Code, Cpu, Activity, ArrowRight, CheckCircle2, Gl
 import { motion, Variants, useScroll, useMotionValueEvent } from 'framer-motion';
 
 export default function Home() {
-  const [navState, setNavState] = useState<"top" | "compact" | "expanded">("top");
   const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() || 0;
-    
-    if (latest <= 50) {
-      setNavState("top");
-    } else if (latest > previous && latest > 50) {
-      // Scrolling down
-      setNavState("compact");
-    } else if (latest < previous && latest > 50) {
-      // Scrolling up
-      setNavState("expanded");
-    }
-  });
 
   const scrollTo = (id: string) => {
     const element = document.getElementById(id);
@@ -64,44 +49,7 @@ export default function Home() {
       </div>
 
       {/* Navbar */}
-      <motion.header 
-        initial="top"
-        animate={navState}
-        variants={{
-          top: {
-            y: 0,
-            width: "100%",
-            maxWidth: "100%",
-            borderRadius: "0px",
-            backgroundColor: "rgba(2, 2, 5, 0.4)", // Slight transparent blur
-            paddingTop: "24px",
-            paddingBottom: "24px",
-            borderBottomColor: "rgba(255,255,255,0.05)"
-          },
-          compact: {
-            y: 16,
-            width: "95%",
-            maxWidth: "1024px",
-            borderRadius: "32px",
-            backgroundColor: "rgba(10, 10, 10, 0.9)", // Solid pill
-            paddingTop: "12px",
-            paddingBottom: "12px",
-            borderBottomColor: "rgba(255,255,255,0.1)"
-          },
-          expanded: {
-            y: 0,
-            width: "100%",
-            maxWidth: "100%",
-            borderRadius: "0px",
-            backgroundColor: "rgba(10, 10, 10, 0.95)", // Solid background to mask content
-            paddingTop: "24px",
-            paddingBottom: "24px",
-            borderBottomColor: "rgba(255,255,255,0.1)"
-          }
-        }}
-        transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }} 
-        className="fixed inset-x-0 mx-auto z-50 flex items-center justify-between pointer-events-auto backdrop-blur-md border border-x-transparent border-t-transparent shadow-2xl px-6 md:px-12"
-      >
+      <header className="fixed top-0 inset-x-0 mx-auto z-50 flex items-center justify-between py-4 px-6 md:px-12 pointer-events-auto bg-[#020205]/40 backdrop-blur-md border-b border-white/5 shadow-sm">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 flex items-center justify-center opacity-80">
             <div className="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center">
@@ -111,18 +59,12 @@ export default function Home() {
           <span className="font-light tracking-[0.2em] text-lg lowercase text-gray-200">entangle</span>
         </div>
 
-        <nav className={`hidden lg:flex items-center text-sm font-medium text-gray-300 transition-all duration-500 ${navState === "compact" ? 'gap-6' : 'gap-10'}`}>
-          <button onClick={() => scrollTo('subnet')} className="hover:text-white cursor-pointer transition-colors text-shadow-strong">Subnet</button>
-          <button onClick={() => scrollTo('protocol')} className="hover:text-white cursor-pointer transition-colors text-shadow-strong">Protocol</button>
-          <button onClick={() => scrollTo('developers')} className="hover:text-white cursor-pointer transition-colors text-shadow-strong">Developers</button>
-          <button onClick={() => scrollTo('miners')} className="hover:text-white cursor-pointer transition-colors text-shadow-strong">Miners</button>
-          <button onClick={() => scrollTo('validators')} className="hover:text-white cursor-pointer transition-colors text-shadow-strong">Validators</button>
-        </nav>
+        {/* Nav Links Removed */}
 
-        <button className="text-sm font-medium bg-white/10 border border-white/20 text-white px-6 py-2 rounded-full hover:bg-white/20 transition-all backdrop-blur-sm shadow-xl">
+        <button className="px-6 py-2 text-sm font-medium text-white transition-all bg-white/10 border rounded-full shadow-xl border-white/20 hover:bg-white/20 backdrop-blur-sm">
           Launch App
         </button>
-      </motion.header>
+      </header>
 
       {/* Main Content Flow */}
       <div className="relative z-10 w-full flex flex-col pb-0">
