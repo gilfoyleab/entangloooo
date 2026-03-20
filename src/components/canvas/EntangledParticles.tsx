@@ -77,7 +77,7 @@ export function EntangledParticles() {
     const rx = (offsetDistance + scroll * pullAmount);
 
     // Generate virtual signals with a 2-3 second delay burst logic
-    const cycleLength = 3.5; 
+    const cycleLength = 2.8; 
     const travelTime = 1.0;  
 
     const time1 = t;
