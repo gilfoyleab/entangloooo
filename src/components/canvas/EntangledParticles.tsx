@@ -104,7 +104,7 @@ export function EntangledParticles() {
   const blueRingRef = useRef<THREE.Points>(null);
   const redRingRef = useRef<THREE.Points>(null);
 
-  const particleCount = 25000;
+  const particleCount = 37500; // Increased density by 1.5x (from 25000)
   const ringParticleCount = 1500;
   const radius = 1.3;
   const offsetDistance = 3.3; // Increased gap even more safely
