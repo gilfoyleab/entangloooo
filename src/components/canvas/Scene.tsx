@@ -10,16 +10,19 @@ import * as THREE from 'three';
 function DriftingStars() {
   const groupRef = useRef<THREE.Group>(null);
   const baseRotation = useRef(0);
+  const smoothedScroll = useRef(0);
 
   useFrame((state, delta) => {
     if (groupRef.current) {
       const scrollY = typeof window !== 'undefined' ? window.scrollY : 0;
-      const scroll = Math.min(1, scrollY / 2500);
+      const targetScroll = Math.min(1, scrollY / 2500);
+      smoothedScroll.current += (targetScroll - smoothedScroll.current) * 0.05;
+      const scroll = smoothedScroll.current;
       const t = state.clock.elapsedTime;
 
       // 1. Dynamic Snap-to-Home: Ensure stars are perfectly oriented at the very top (scroll=0)
       const homeSnap = Math.min(1, scroll * 15);
-      groupRef.current.rotation.z = ((-t * 0.05) - (scroll * 1.5)) * homeSnap; 
+      groupRef.current.rotation.z = ((-t * 0.04) - (scroll * 1.0)) * homeSnap; 
       
       // 2. Ultra-smooth Orbit/Pivot
       groupRef.current.rotation.y = Math.sin(t * 0.1) * 0.04 * homeSnap;

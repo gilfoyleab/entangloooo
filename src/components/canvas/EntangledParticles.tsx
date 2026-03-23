@@ -136,16 +136,22 @@ export function EntangledParticles() {
 
   const { positions: corePositions, colors: coreColors } = useMemo(() => generateWormhole(6000, radius), []);
 
+  const smoothedScroll = useRef(0);
+
   useFrame((state, delta) => {
     const scrollY = typeof window !== 'undefined' ? window.scrollY : 0;
-    const scroll = Math.min(1, scrollY / 1500);
+    const targetScroll = Math.min(1, scrollY / 1500);
+    // Smoothly lerp towards the target scroll to prevent jitter
+    smoothedScroll.current += (targetScroll - smoothedScroll.current) * 0.05;
+    const scroll = smoothedScroll.current;
+    
     const t = state.clock.elapsedTime;
 
     if (groupRef.current) {
       // 1. Dynamic Snap-to-Home: Ensure spheres are perfectly horizontal at the very top (scroll=0)
       // but start their "full rotation" as soon as the user scrolls.
-      const homeSnap = Math.min(1, scroll * 12); // Sharp but smooth transition to home
-      groupRef.current.rotation.y = ((t * 0.15) + (scroll * 2.5)) * homeSnap;
+      const homeSnap = Math.min(1, scroll * 15); // Slightly sharper transition to match smoothing
+      groupRef.current.rotation.y = ((t * 0.12) + (scroll * 1.5)) * homeSnap;
       groupRef.current.rotation.x = Math.sin(t * 0.2) * 0.04 * homeSnap;
       // groupRef.current.position.z = scroll * 0.7; // REMOVED: Locks size from growing on scroll
 
