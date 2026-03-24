@@ -16,17 +16,24 @@ function DriftingStars() {
     if (groupRef.current) {
       const scrollY = typeof window !== 'undefined' ? window.scrollY : 0;
       const targetScroll = Math.min(1, scrollY / 2500);
-      smoothedScroll.current += (targetScroll - smoothedScroll.current) * 0.2;
+      // Buttery smooth lerp
+      smoothedScroll.current += (targetScroll - smoothedScroll.current) * 0.08;
       const scroll = smoothedScroll.current;
       const t = state.clock.elapsedTime;
 
-      // 1. Dynamic Snap-to-Home: Ensure stars are perfectly oriented at the very top (scroll=0)
-      const homeSnap = Math.min(1, scroll * 15);
-      groupRef.current.rotation.z = ((-t * 0.04) - (scroll * 1.0)) * homeSnap; 
+      // 1. Shortest-Path Home Landing: Ensures majestic return without multi-spin
+      const targetRotationZ = (-t * 0.05) - (scroll * 1.5);
+      const currentZ = groupRef.current.rotation.z;
+      const targetZ = scroll > 0.01 ? targetRotationZ : 0;
       
-      // 2. Ultra-smooth Orbit/Pivot
-      groupRef.current.rotation.y = Math.sin(t * 0.1) * 0.04 * homeSnap;
-      groupRef.current.rotation.x = Math.cos(t * 0.1) * 0.04 * homeSnap;
+      const diffZ = (targetZ - currentZ + Math.PI) % (Math.PI * 2) - Math.PI;
+      groupRef.current.rotation.z += diffZ * 0.1;
+      
+      // 2. Ultra-smooth Orbit/Pivot (Shortest path to target)
+      const targetRY = Math.sin(t * 0.1) * 0.04 * (scroll > 0.01 ? 1 : 0);
+      const targetRX = Math.cos(t * 0.1) * 0.04 * (scroll > 0.01 ? 1 : 0);
+      groupRef.current.rotation.y += (targetRY - groupRef.current.rotation.y) * 0.1;
+      groupRef.current.rotation.x += (targetRX - groupRef.current.rotation.x) * 0.1;
 
       // 3. Depth Parallax (Minor zoom effect on scroll)
       groupRef.current.position.z = -scroll * 40;

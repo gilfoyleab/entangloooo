@@ -140,19 +140,28 @@ export function EntangledParticles() {
 
   useFrame((state, delta) => {
     const scrollY = typeof window !== 'undefined' ? window.scrollY : 0;
-    const targetScroll = Math.min(1, scrollY / 1500);
-    // Increased lerp factor from 0.05 to 0.2 for "real-time" feel as requested
-    smoothedScroll.current += (targetScroll - smoothedScroll.current) * 0.2;
+    const targetScroll = Math.min(1, scrollY / 1800);
+    // Slower lerp for that "buttery" feel the user liked before
+    smoothedScroll.current += (targetScroll - smoothedScroll.current) * 0.08;
     const scroll = smoothedScroll.current;
     
     const t = state.clock.elapsedTime;
 
     if (groupRef.current) {
-      // 1. Dynamic Snap-to-Home: Ensure spheres are perfectly horizontal at the very top (scroll=0)
-      // but start their "full rotation" as soon as the user scrolls.
-      const homeSnap = Math.min(1, scroll * 15); // Slightly sharper transition to match smoothing
-      groupRef.current.rotation.y = ((t * 0.12) + (scroll * 1.5)) * homeSnap;
-      groupRef.current.rotation.x = Math.sin(t * 0.2) * 0.04 * homeSnap;
+      // 1. Shortest-Path Home Landing:
+      // Instead of an absolute fade (which causes rewinds), we lerp towards a target angle
+      // by always taking the shortest route.
+      const targetRotationY = (t * 0.15) + (scroll * 2.5);
+      
+      // Calculate shortest path to target (or 0 at top)
+      const currentY = groupRef.current.rotation.y;
+      const rotTargetY = scroll > 0.01 ? targetRotationY : 0;
+      
+      const diffY = (rotTargetY - currentY + Math.PI) % (Math.PI * 2) - Math.PI;
+      groupRef.current.rotation.y += diffY * 0.15; // Smoothly close the gap
+
+      const rotTargetX = Math.sin(t * 0.2) * 0.05 * (scroll > 0.01 ? 1 : 0);
+      groupRef.current.rotation.x += (rotTargetX - groupRef.current.rotation.x) * 0.1;
       // groupRef.current.position.z = scroll * 0.7; // REMOVED: Locks size from growing on scroll
 
       // 1. Premium Mouse Parallax (Smoothly follows mouse)
