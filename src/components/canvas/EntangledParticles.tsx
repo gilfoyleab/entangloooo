@@ -137,6 +137,13 @@ export function EntangledParticles() {
   const { positions: corePositions, colors: coreColors } = useMemo(() => generateWormhole(6000, radius), []);
 
   const smoothedScroll = useRef(0);
+  
+  // Random Flash State Timers
+  const nextFlashBlue = useRef(Math.random() * 1.0);
+  const flashDurationBlue = useRef(0.05 + Math.random() * 0.15);
+  
+  const nextFlashRed = useRef(Math.random() * 1.0);
+  const flashDurationRed = useRef(0.05 + Math.random() * 0.15);
 
   useFrame((state, delta) => {
     const scrollY = typeof window !== 'undefined' ? window.scrollY : 0;
@@ -198,11 +205,26 @@ export function EntangledParticles() {
     const bx = -offsetDistance;
     const rx = offsetDistance;
 
-    // Ping-Pong "Chis Chis" Communication Flash Logic
-    // Flash every 1.5 seconds. Blue flashes at 0.0, Red flashes at 0.75
-    const flashCycle = t % 1.5;
-    const isBlueFlashing = flashCycle < 0.1; // Very fast, abrupt flash (0.1s)
-    const isRedFlashing = flashCycle > 0.75 && flashCycle < 0.85;
+    // Random "Chis Chis" Communication Flash Logic
+    // Both interval and duration are completely random to create an organic, unpredictable data-burst effect.
+    let isBlueFlashing = false;
+    if (t > nextFlashBlue.current) {
+      isBlueFlashing = true;
+      if (t > nextFlashBlue.current + flashDurationBlue.current) {
+        // Flash completely finished. Schedule next one!
+        nextFlashBlue.current = t + 0.2 + Math.random() * 0.8; // Random delay off (0.2s to 1.0s)
+        flashDurationBlue.current = 0.05 + Math.random() * 0.15; // Random flash duration (0.05s to 0.20s)
+      }
+    }
+
+    let isRedFlashing = false;
+    if (t > nextFlashRed.current) {
+      isRedFlashing = true;
+      if (t > nextFlashRed.current + flashDurationRed.current) {
+        nextFlashRed.current = t + 0.2 + Math.random() * 0.8;
+        flashDurationRed.current = 0.05 + Math.random() * 0.15;
+      }
+    }
 
     // Helper to abruptly flash a rotating sector of the sphere
     const updateFlash = (
