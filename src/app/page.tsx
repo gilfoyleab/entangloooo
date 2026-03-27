@@ -1,6 +1,8 @@
 'use client';
 
 import { Scene } from '@/components/canvas/Scene';
+import Image from 'next/image';
+import logoImg from '@/app/asset/logo.png';
 import { useEffect, useState } from 'react';
 import { Network, Shield, Zap, Code, Cpu, Activity, ArrowRight, CheckCircle2, Globe, Server, Database, Lock, Hexagon, CircleDashed, Orbit } from 'lucide-react';
 import { motion, Variants, useScroll, useMotionValueEvent } from 'framer-motion';
@@ -29,14 +31,14 @@ export default function Home() {
 
   const heroVariant: Variants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 1.2, 
-        ease: [0.16, 1, 0.3, 1], 
-        delay: 0.8 
-      } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1],
+        delay: 0.8
+      }
     }
   };
 
@@ -51,11 +53,14 @@ export default function Home() {
       {/* Navbar */}
       <header className="fixed top-0 inset-x-0 mx-auto z-50 flex items-center justify-between py-4 px-6 md:px-12 pointer-events-auto bg-[#020205]/40 backdrop-blur-md border-b border-white/5 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 flex items-center justify-center opacity-80">
-            <div className="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-            </div>
-          </div>
+          <Image
+            src={logoImg}
+            alt="Entangle Protocol Logo"
+            width={36}
+            height={36}
+            className="object-contain drop-shadow-[0_0_8px_rgba(0,210,255,0.4)]"
+            priority
+          />
           <span className="font-light tracking-[0.2em] text-lg lowercase text-gray-200">entangle protocol</span>
         </div>
 
