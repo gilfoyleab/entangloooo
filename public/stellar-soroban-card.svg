@@ -1,0 +1,18 @@
+<svg width="592" height="392" viewBox="0 0 592 392" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="stellar-card-title stellar-card-desc">
+  <title id="stellar-card-title">Stellar Soroban Card</title>
+  <desc id="stellar-card-desc">A black Stellar card with a white rocket mark, the Stellar wordmark, and Soroban subtitle.</desc>
+  <rect width="592" height="392" fill="#020205"/>
+  <rect x="34" y="14" width="485" height="384" stroke="#3B3B42" stroke-width="2"/>
+
+  <g transform="translate(205 66)">
+    <g transform="rotate(-16 92 60)">
+      <path d="M96.46 2C112.378 2 125.281 14.9035 125.281 30.8215C125.281 57.8758 111.002 84.2236 89.1524 105.554L84.5 110.096L79.8476 105.554C57.9985 84.2236 43.7188 57.8758 43.7188 30.8215C43.7188 14.9035 56.6223 2 72.5404 2H96.46Z" fill="#FBFBFC"/>
+      <path d="M51.4812 49.1561L24.7245 68.4054C19.2362 72.3527 18.4868 80.3389 23.1348 85.2358L30.7255 93.2318C35.1352 97.8773 42.3504 98.655 47.6944 94.8893L72.1046 77.6973" fill="#FBFBFC"/>
+      <path d="M87.6521 103.773L83.769 145.271C83.1708 151.665 77.8088 156.552 71.3868 156.552H66.8801C60.4581 156.552 55.0961 151.665 54.4979 145.271L50.8868 113.76" fill="#FBFBFC"/>
+      <circle cx="98.7789" cy="31.3552" r="11.2884" fill="#020205"/>
+    </g>
+  </g>
+
+  <text x="296" y="267" fill="#FAFAFB" font-size="44" font-weight="600" text-anchor="middle" font-family="Sora, Avenir Next, Helvetica Neue, Arial, sans-serif" letter-spacing="0.02em">Stellar</text>
+  <text x="296" y="334" fill="#575760" font-size="30" font-weight="500" text-anchor="middle" font-family="Sora, Avenir Next, Helvetica Neue, Arial, sans-serif" letter-spacing="0.08em">SOROBAN</text>
+</svg>

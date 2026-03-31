@@ -63,6 +63,26 @@ main code .font-mono {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* Surface tokens for consistent section backgrounds */
+.surface-glass-soft {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.surface-glass-strong {
+  background: rgba(10, 10, 12, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.surface-solid-accent {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+}
+
 /* Metallic Text Utilities */
 .text-metallic-premium {
   background: linear-gradient(180deg, #ffffff 0%, #e5e7eb 45%, #9ca3af 100%);
