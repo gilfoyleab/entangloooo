@@ -18,16 +18,9 @@ body {
   padding: 0;
 }
 
-main .font-mono {
-  font-family: inherit;
-  letter-spacing: 0.14em;
-}
-
 main pre,
-main code,
-main pre .font-mono,
-main code .font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+main code {
+  font-family: inherit;
   letter-spacing: normal;
 }
 
