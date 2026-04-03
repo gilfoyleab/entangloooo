@@ -1216,11 +1216,11 @@ entangle.sendMessage{value: fees}(
             {/* The top crosshair grid line */}
             <div className="absolute top-[120px] left-[-20vw] right-[-20vw] h-[1px] bg-[#1a1a1a] pointer-events-none z-0"></div>
 
-            <div className="relative z-10 mb-8 pt-5 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4">
+            <div className="relative z-10 mb-8 pt-5 flex flex-col gap-4 pb-4">
               <h2 className="text-4xl md:text-5xl md: font-semibold leading-[1.1] pb-1 text-metallic-premium drop-shadow-2xl">
                 5-Dimension Scoring.
               </h2>
-              <p className="text-[#888] text-[15px] md:text-[16px] max-w-[280px] md:text-right leading-relaxed mb-1 md:mr-2">
+              <p className="text-[#888] text-[16px] max-w-[500px] leading-relaxed">
                 Quality drives rewards. Miners are scored on every delivery.
               </p>
             </div>
@@ -1278,8 +1278,10 @@ entangle.sendMessage{value: fees}(
               </div>
 
               {/* 6. Blended Score Box */}
-              <div className="relative border border-white/10 bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors rounded-xl py-5 pl-6 pr-5 shadow-2xl z-20">
-                <div className="text-gray-400 text-[10px] uppercase mb-6 font-bold">BLENDED SCORE</div>
+              <div className="relative border border-white/10 border-l-[3px] border-l-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors rounded-r-xl py-5 pl-6 pr-5 shadow-2xl z-20">
+                <div className="absolute top-4 right-4 bg-white/10 text-[#bbb] text-[10px] px-1.5 py-0.5 rounded leading-none backdrop-blur-sm">Σ</div>
+                <div className="text-white text-[20px] font-bold mb-1 drop-shadow-md">Blended Score</div>
+                <div className="text-gray-400 text-[10px] uppercase mb-4 font-bold">FINAL FORMULA</div>
                 <div className="text-[14px] leading-[1.8] drop-shadow-md">
                   <div className="text-gray-300 mb-2">Score = </div>
                   <div><span className="text-[#cccccc] font-bold">0.70</span> <span className="text-white mx-1 text-xs px-0.5">×</span> <span className="text-gray-200">Exec +</span></div>
@@ -1429,8 +1431,7 @@ entangle.sendMessage{value: fees}(
         <section id="reference-run" className="w-full relative z-10 my-24 md:my-32 px-6">
           <div className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
 
-            {/* Very faint vertical separator down the middle */}
-            <div className="absolute top-0 bottom-0 left-[35%] w-[1px] bg-[#1a1a1a] pointer-events-none z-0 hidden lg:block"></div>
+
 
             <div className="relative z-10 mb-6 pt-3">
               <h2 className="text-4xl md:text-5xl md: font-semibold mb-2 text-metallic-premium drop-shadow-2xl">
@@ -1478,10 +1479,10 @@ entangle.sendMessage{value: fees}(
               </div>
 
               {/* Execution Diagram */}
-              <div className="relative px-5 py-10 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0">
+              <div className="relative px-5 py-10 md:py-14 flex flex-col md:flex-row items-start justify-between gap-8 md:gap-0">
 
-                {/* Connecting Line (drawn in background) */}
-                <div className="hidden md:block absolute top-[92px] left-[18%] right-[18%] h-[1.5px] bg-gradient-to-r from-[#cccccc]/80 via-[#111111] to-[#cccccc]/80 z-0 shadow-[0_0_15px_rgba(204,204,204,0.4)]"></div>
+                {/* Connecting Line - starts at right edge of left circle, ends at left edge of right circle */}
+                <div className="hidden md:block absolute top-[calc(3.5rem+36px)] left-[calc(1.25rem+126px)] right-[calc(1.25rem+126px)] h-[1.5px] bg-gradient-to-r from-[#cccccc]/80 via-[#111111] to-[#cccccc]/80 z-0 shadow-[0_0_15px_rgba(204,204,204,0.4)]"></div>
 
                 {/* Left Node (Sepolia) */}
                 <div className="relative z-10 flex flex-col items-center text-center w-full md:w-[180px]">
@@ -1498,8 +1499,17 @@ entangle.sendMessage{value: fees}(
                   <div className="text-[#555] text-[10px] bg-transparent mt-0.5">Block 10464665</div>
                 </div>
 
-                {/* Middle Node (ENTANGLE RELAY) */}
-                <div className="relative z-10 w-[170px] bg-transparent hover:bg-white/5 transition-colors backdrop-blur-sm border border-white/5 rounded-[8px] p-4 flex flex-col items-center text-center mt-[-20px] md:mt-[-40px]">
+                {/* Middle Node (ENTANGLE RELAY) - Desktop: absolutely centered on the line */}
+                <div className="hidden md:flex absolute left-1/2 top-[calc(3.5rem+36px)] -translate-x-1/2 -translate-y-1/2 z-10 w-[170px] bg-[#0a0a0f]/80 hover:bg-white/5 transition-colors backdrop-blur-md border border-white/5 rounded-[8px] p-4 flex-col items-center text-center">
+                  <div className="text-[#777] text-[10px] uppercase mb-1">ENTANGLE RELAY</div>
+                  <div className="text-white text-[26px] font-bold mb-0.5">8.3s</div>
+                  <div className="flex items-center gap-1 text-[#cccccc] text-[9px] font-bold uppercase mt-0.5">
+                    <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+                    OPTIMIZED
+                  </div>
+                </div>
+                {/* Middle Node (ENTANGLE RELAY) - Mobile: inline flow */}
+                <div className="md:hidden relative z-10 w-[170px] bg-transparent hover:bg-white/5 transition-colors backdrop-blur-sm border border-white/5 rounded-[8px] p-4 flex flex-col items-center text-center">
                   <div className="text-[#777] text-[10px] uppercase mb-1">ENTANGLE RELAY</div>
                   <div className="text-white text-[26px] font-bold mb-0.5">8.3s</div>
                   <div className="flex items-center gap-1 text-[#cccccc] text-[9px] font-bold uppercase mt-0.5">
