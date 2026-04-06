@@ -5,9 +5,9 @@ import { useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
-const baseBlue = new THREE.Color("#00d2ff");
+const baseBlue = new THREE.Color("#e0e0e0"); // left sphere: bright white-gray
 const flashBlue = new THREE.Color("#ffffff").multiplyScalar(3.0);
-const baseRed = new THREE.Color("#ff1a66");
+const baseRed = new THREE.Color("#888888");  // right sphere: mid-gray
 const flashRed = new THREE.Color("#ffffff").multiplyScalar(3.0);
 
 function generateLumpySphere(count: number, radius: number, noiseAmp: number) {
@@ -30,8 +30,8 @@ function generateWormhole(count: number, radius: number) {
   const positions = new Float32Array(count * 3);
   const colors = new Float32Array(count * 3);
 
-  const colorBlue = new THREE.Color("#00d2ff");
-  const colorRed = new THREE.Color("#ff1a66");
+  const colorBlue = new THREE.Color("#cccccc"); // light gray
+  const colorRed = new THREE.Color("#555555");   // dark gray
   const colorWhite = new THREE.Color("#ffffff");
 
   for (let i = 0; i < count; i++) {

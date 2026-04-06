@@ -1321,7 +1321,7 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-4 mt-1">
                   <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M21 7.28V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2.28c.59-.35 1-.98 1-1.72V9c0-.74-.41-1.37-1-1.72zM20 9v6h-2V9h2zM5 19V5h14v2h-6c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h6v2H5z" /></svg>
                   <div className="flex gap-2 mt-0.5 items-center">
-                    <svg className="w-[12px] h-[12px] text-[#627eea]" viewBox="0 0 32 32" fill="currentColor">
+                    <svg className="w-[12px] h-[12px] text-white" viewBox="0 0 32 32" fill="currentColor">
                       <path d="M15.925 23.969L15.823 24l-7.447-4.391 7.553 10.638 7.57-10.638-7.574 4.36zM15.986 0L8.358 12.67l7.625 4.542 7.643-4.542L15.986 0z" />
                     </svg>
                     <div className="w-[13px] h-[13px] rounded-full bg-[#cccccc]"></div>
