@@ -290,6 +290,230 @@ export default function Home() {
           </motion.div>
         </section>
 
+
+        <section id="simple-integration" className="w-full relative z-10 my-24 md:my-32 px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden max-w-[1300px] mx-auto w-full">
+
+            <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-center">
+
+              {/* Left Side: Text Content */}
+              <div className="flex flex-col justify-center h-full xl:pr-10 relative">
+                <div className="relative z-10 space-y-10">
+                  <h2 className="type-title text-metallic-premium drop-shadow-2xl mb-8">
+                    Entangle Design Principle
+                  </h2>
+
+                  <div className="space-y-3">
+                    <h3 className="type-subtitle text-white">No single point of anything</h3>
+                    <p className="type-body text-gray-400 font-light leading-relaxed">
+                      N-of-M validators attest every message. No single validator can authorize a delivery. No single miner controls the relay.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="type-subtitle text-white">Incentives over promises</h3>
+                    <p className="type-body text-gray-400 font-light leading-relaxed">
+                      We don't ask miners to be honest. We make honesty the profitable strategy. Bad actors earn near zero and exit naturally.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="type-subtitle text-white">One interface. Every chain.</h3>
+                    <p className="type-body text-gray-400 font-light leading-relaxed">
+                      sendMessage(). verifyMessage(). Two functions. That's the entire surface area your dApp needs to touch. What happens in between is invisible to you. As it should be.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Side: Code Blocks */}
+              <div className="relative w-full flex flex-col gap-4">
+
+                {/* Source Block Wrapper */}
+                <div className="relative pt-6">
+                  <div className="absolute right-0 top-0 text-[#cccccc] type-label flex items-center gap-2">
+                    Source <span className="text-sm md:text-lg leading-none">&rarr;</span>
+                  </div>
+
+                  <div className="rounded-[12px] border border-[#cccccc]/20 bg-black/20 backdrop-blur-md shadow-[0_0_30px_rgba(0,0,0,0.4)] shadow-inner w-full">
+                    <div className="bg-black/40 border-b border-[#ffffff10] py-2 px-4 md:py-3 md:px-5 flex items-center gap-3 backdrop-blur-sm">
+                      <div className="flex gap-2 shrink-0">
+                        <div className="w-3 h-3 rounded-full bg-[#b5b5b5]" />
+                        <div className="w-3 h-3 rounded-full bg-[#8a8a8a]" />
+                        <div className="w-3 h-3 rounded-full bg-[#d8d8d8]" />
+                      </div>
+                      <div className="type-label font-medium text-gray-500 ml-2 overflow-hidden text-ellipsis whitespace-nowrap tracking-widest">Sender.sol (Source Chain)</div>
+                    </div>
+
+                    <pre className="px-4 py-3 md:px-6 md:py-4 leading-relaxed text-[#c9c9d1] overflow-x-auto text-[13px] sm:text-[14px] md:text-[15px] font-mono">
+                      <code>
+                        <span className="text-[#cccccc]">function</span> <span className="text-[#cccccc]">sendCrossChain</span>(<span className="text-gray-400">uint256</span> amount) <span className="text-[#cccccc]">external payable</span> {"{"}
+                        {"\n  "}<span className="text-[#cccccc]">bytes</span> <span className="text-[#cccccc]">memory</span> payload = abi.<span className="text-[#cccccc]">encode</span>(amount);
+                        {"\n  "}<span className="text-[#cccccc]">uint256</span> fee = entangle.<span className="text-[#cccccc]">getRequiredFee</span>(dstChainId, payload.length);
+                        {"\n  "}<span className="text-gray-500">// 1. Dispatch Message</span>
+                        {"\n  "}entangle.<span className="text-[#cccccc]">sendMessage</span>{"{"}<span className="text-[#cccccc]">value</span>: fee{"}"}(dstChainId, dstAddr, payload);
+                        {"\n"}{"}"}
+                      </code>
+                    </pre>
+                  </div>
+                </div>
+
+                {/* Arrow down */}
+                <div className="flex justify-center -my-1 relative z-10 py-1">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                  </svg>
+                </div>
+
+                {/* Destination Block Wrapper */}
+                <div className="relative pt-6">
+                  <div className="absolute right-0 top-0 text-[#cccccc] type-label flex items-center gap-2">
+                    Destination <span className="text-sm md:text-lg leading-none">&rarr;</span>
+                  </div>
+
+                  <div className="rounded-[12px] border border-[#cccccc]/20 bg-black/20 backdrop-blur-md shadow-[0_0_30px_rgba(0,0,0,0.4)] shadow-inner w-full">
+                    <div className="bg-black/40 border-b border-[#ffffff10] py-2 px-4 md:py-3 md:px-5 flex items-center gap-3 backdrop-blur-sm">
+                      <div className="flex gap-2 shrink-0">
+                        <div className="w-3 h-3 rounded-full bg-[#b5b5b5]" />
+                        <div className="w-3 h-3 rounded-full bg-[#8a8a8a]" />
+                        <div className="w-3 h-3 rounded-full bg-[#d8d8d8]" />
+                      </div>
+                      <div className="type-label font-medium text-gray-500 ml-2 overflow-hidden text-ellipsis whitespace-nowrap tracking-widest">Receiver.sol (Destination Chain)</div>
+                    </div>
+
+                    <pre className="px-4 py-3 md:px-6 md:py-4 leading-relaxed text-[#c9c9d1] overflow-x-auto text-[13px] sm:text-[14px] md:text-[15px] font-mono">
+                      <code>
+                        <span className="text-[#cccccc]">function</span> <span className="text-[#cccccc]">receiveEntangleMessage</span>(
+                        {"\n  "}<span className="text-[#cccccc]">bytes</span> <span className="text-[#cccccc]">memory</span> payload, <span className="text-[#cccccc]">bytes</span> <span className="text-[#cccccc]">memory</span> sigs, ...
+                        {"\n"}) <span className="text-[#cccccc]">external payable</span> {"{"}
+                        {"\n  "}<span className="text-gray-500">// 2. Verify Origin (Security)</span>
+                        {"\n  "}<span className="text-[#cccccc]">require</span>(<span className="text-[#cccccc]">msg.sender</span> == <span className="text-[#cccccc]">address</span>(entangle), "Only Entangle");
+                        {"\n  "}<span className="text-gray-500">// 3. Execute Logic</span>
+                        {"\n  "}<span className="text-[#cccccc]">uint256</span> amount = abi.<span className="text-[#cccccc]">decode</span>(payload, (<span className="text-[#cccccc]">uint256</span>));
+                        {"\n  "}<span className="text-[#cccccc]">_mint</span>(amount);
+                        {"\n"}{"}"}
+                      </code>
+                    </pre>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        <section id="reference-run" className="w-full relative z-10 my-24 md:my-32 px-6">
+          <div className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
+
+
+
+            <div className="flex flex-col items-center text-center w-full relative z-10 mb-6 pt-3">
+              <h2 className="type-title mb-2 text-metallic-premium drop-shadow-2xl">
+                It&apos;s Live
+              </h2>
+            </div>
+
+            {/* Top Metrics Row */}
+            <div className="relative z-10 flex flex-col md:flex-row gap-4 mb-8 w-full max-w-[950px] mx-auto">
+              {/* 8.3s */}
+              <div className="flex-1 border-l-[3px] border-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors p-5 shadow-lg">
+                <div className="text-[44px] font-bold text-[#cccccc] leading-none mb-2 drop-shadow-[0_0_15px_rgba(204,204,204,0.2)] mt-1">8.3s</div>
+                <div className="text-[#888] type-label mb-1 font-semibold">Fastest Delivery</div>
+                <div className="text-[#555] type-label leading-relaxed">Solana &rarr; Arbitrum</div>
+              </div>
+
+              {/* 8/8 */}
+              <div className="flex-1 border-l-[3px] border-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors p-5 shadow-lg">
+                <div className="text-[44px] font-bold text-[#cccccc] leading-none mb-2 drop-shadow-[0_0_15px_rgba(204,204,204,0.2)] mt-1">8/8</div>
+                <div className="text-[#888] type-label mb-1 font-semibold">Consecutive Runs</div>
+                <div className="text-[#555] type-label leading-relaxed">100% Success Rate</div>
+              </div>
+
+              {/* 213K */}
+              <div className="flex-1 border-l-[3px] border-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors p-5 shadow-lg">
+                <div className="text-[44px] font-bold text-[#cccccc] leading-none mb-2 drop-shadow-[0_0_15px_rgba(204,204,204,0.2)] mt-1">213K</div>
+                <div className="text-[#888] type-label mb-1 font-semibold">Gas Used</div>
+                <div className="text-[#555] type-label leading-relaxed">Reference Delivery</div>
+              </div>
+            </div>
+
+            {/* Main Reference Run Container */}
+            <div className="relative z-10 w-full max-w-[950px] mx-auto border border-white/5 bg-black/20 backdrop-blur-md rounded-[10px] shadow-inner overflow-hidden">
+
+              {/* Header Slice */}
+              <div className="bg-white/[0.03] px-5 py-2 flex items-center justify-between border-b border-white/5">
+                <div className="text-[11px]">
+                  <span className="text-[#666]">Reference Run ID:</span>
+                  <span className="text-white font-bold ml-2">#TEST-2026-03-17-A</span>
+                </div>
+                <div className="bg-[#cccccc] text-black font-bold type-label px-3 py-1.5 rounded-[4px] flex items-center gap-1.5 shadow-[0_0_15px_rgba(204,204,204,0.3)]">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><path d="M5 13l4 4L19 7"></path></svg>
+                  Verified
+                </div>
+              </div>
+
+              {/* Execution Diagram */}
+              <div className="relative px-5 py-10 md:py-14 flex flex-col md:flex-row items-start justify-between gap-8 md:gap-0">
+
+                {/* Connecting Line - starts at right edge of left circle, ends at left edge of right circle */}
+                <div className="hidden md:block absolute top-[calc(3.5rem+36px)] left-[calc(1.25rem+126px)] right-[calc(1.25rem+126px)] h-[1.5px] bg-gradient-to-r from-[#cccccc]/80 via-[#111111] to-[#cccccc]/80 z-0 shadow-[0_0_15px_rgba(204,204,204,0.4)]"></div>
+
+                {/* Left Node (Sepolia) */}
+                <div className="relative z-10 flex flex-col items-center text-center w-full md:w-[180px]">
+                  <div className="w-[72px] h-[72px] rounded-full border-[2px] border-[#cccccc] bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(204,204,204,0.3)] flex items-center justify-center mb-3 z-10 hover:bg-black/60 transition-colors">
+                    <svg className="w-[30px] h-[30px] text-white" viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M15.925 23.969L15.823 24l-7.447-4.391 7.553 10.638 7.57-10.638-7.574 4.36zM15.986 0L8.358 12.67l7.625 4.542 7.643-4.542L15.986 0z" />
+                    </svg>
+                  </div>
+                  <div className="type-subtitle text-white mb-1.5">Sepolia</div>
+                  <div className="text-[#666] text-[12px] mb-1.5 whitespace-nowrap">Message Dispatched</div>
+                  <div className="bg-[#cccccc]/10 text-[#cccccc] border border-[#cccccc]/20 rounded-[4px] px-2.5 py-1 text-[11px] mb-3 min-w-[130px]">
+                    0x4f90576e...
+                  </div>
+                  <div className="text-[#555] text-[10px] bg-transparent mt-0.5">Block 10464665</div>
+                </div>
+
+                {/* Middle Node (ENTANGLE RELAY) - Desktop: absolutely centered on the line */}
+                <div className="hidden md:flex absolute left-1/2 top-[calc(3.5rem+36px)] -translate-x-1/2 -translate-y-1/2 z-10 w-[170px] bg-[#0a0a0f]/80 hover:bg-white/5 transition-colors backdrop-blur-md border border-white/5 rounded-[8px] p-4 flex-col items-center text-center">
+                  <div className="text-[#777] type-label mb-1">Entangle Relay</div>
+                  <div className="text-white text-[26px] font-bold mb-0.5">8.3s</div>
+                  <div className="flex items-center gap-1 text-[#cccccc] text-[9px] font-bold mt-0.5">
+                    <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+                    Optimized
+                  </div>
+                </div>
+                {/* Middle Node (ENTANGLE RELAY) - Mobile: inline flow */}
+                <div className="md:hidden relative z-10 w-[170px] bg-transparent hover:bg-white/5 transition-colors backdrop-blur-sm border border-white/5 rounded-[8px] p-4 flex flex-col items-center text-center">
+                  <div className="text-[#777] type-label mb-1">Entangle Relay</div>
+                  <div className="text-white text-[26px] font-bold mb-0.5">8.3s</div>
+                  <div className="flex items-center gap-1 text-[#cccccc] text-[9px] font-bold mt-0.5">
+                    <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+                    Optimized
+                  </div>
+                </div>
+
+                {/* Right Node (Arbitrum) */}
+                <div className="relative z-10 flex flex-col items-center text-center w-full md:w-[180px]">
+                  <div className="w-[72px] h-[72px] rounded-full border-[2px] border-[#cccccc] bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(204,204,204,0.3)] flex items-center justify-center mb-3 z-10 hover:bg-black/60 transition-colors">
+                    <svg className="w-[30px] h-[30px] text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2L2 7l10 5 10-5-10-5zm0 6l-10 5 10 5 10-5-10-5zm0 6l-10 5 10 5 10-5-10-5z" />
+                    </svg>
+                  </div>
+                  <div className="type-subtitle text-white mb-1.5 whitespace-nowrap">Arbitrum Sepolia</div>
+                  <div className="text-[#666] text-[12px] mb-1.5 whitespace-nowrap">Message Received</div>
+                  <div className="bg-[#cccccc]/10 text-[#cccccc] border border-[#cccccc]/20 rounded-[4px] px-2.5 py-1 text-[11px] mb-3 min-w-[130px]">
+                    0xf802b3b6...
+                  </div>
+                  <div className="text-[#555] text-[10px] bg-transparent mt-0.5">isRelayed = true</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
         {false && (
         <section id="protocol" className="my-24 md:my-32 py-16 md:py-24 px-6 max-w-[1400px] mx-auto w-full surface-glass-strong rounded-[2rem] shadow-2xl relative z-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant}>
@@ -655,121 +879,98 @@ export default function Home() {
           </motion.div>
         </section>
 
+        <section id="actions" className="w-full relative z-10 my-24 md:my-32 px-6">
+          <div className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
 
-        <section id="simple-integration" className="w-full relative z-10 my-24 md:my-32 px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden max-w-[1300px] mx-auto w-full">
 
-            <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-center">
-
-              {/* Left Side: Text Content */}
-              <div className="flex flex-col justify-center h-full xl:pr-10 relative">
-                <div className="relative z-10 space-y-10">
-                  <h2 className="type-title text-metallic-premium drop-shadow-2xl mb-8">
-                    Entangle Design Principle
-                  </h2>
-
-                  <div className="space-y-3">
-                    <h3 className="type-subtitle text-white">No single point of anything</h3>
-                    <p className="type-body text-gray-400 font-light leading-relaxed">
-                      N-of-M validators attest every message. No single validator can authorize a delivery. No single miner controls the relay.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h3 className="type-subtitle text-white">Incentives over promises</h3>
-                    <p className="type-body text-gray-400 font-light leading-relaxed">
-                      We don't ask miners to be honest. We make honesty the profitable strategy. Bad actors earn near zero and exit naturally.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h3 className="type-subtitle text-white">One interface. Every chain.</h3>
-                    <p className="type-body text-gray-400 font-light leading-relaxed">
-                      sendMessage(). verifyMessage(). Two functions. That's the entire surface area your dApp needs to touch. What happens in between is invisible to you. As it should be.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Side: Code Blocks */}
-              <div className="relative w-full flex flex-col gap-4">
-
-                {/* Source Block Wrapper */}
-                <div className="relative pt-6">
-                  <div className="absolute right-0 top-0 text-[#cccccc] type-label flex items-center gap-2">
-                    Source <span className="text-sm md:text-lg leading-none">&rarr;</span>
-                  </div>
-
-                  <div className="rounded-[12px] border border-[#cccccc]/20 bg-black/20 backdrop-blur-md shadow-[0_0_30px_rgba(0,0,0,0.4)] shadow-inner w-full">
-                    <div className="bg-black/40 border-b border-[#ffffff10] py-2 px-4 md:py-3 md:px-5 flex items-center gap-3 backdrop-blur-sm">
-                      <div className="flex gap-2 shrink-0">
-                        <div className="w-3 h-3 rounded-full bg-[#b5b5b5]" />
-                        <div className="w-3 h-3 rounded-full bg-[#8a8a8a]" />
-                        <div className="w-3 h-3 rounded-full bg-[#d8d8d8]" />
-                      </div>
-                      <div className="type-label font-medium text-gray-500 ml-2 overflow-hidden text-ellipsis whitespace-nowrap tracking-widest">Sender.sol (Source Chain)</div>
-                    </div>
-
-                    <pre className="px-4 py-3 md:px-6 md:py-4 leading-relaxed text-[#c9c9d1] overflow-x-auto text-[13px] sm:text-[14px] md:text-[15px] font-mono">
-                      <code>
-                        <span className="text-[#cccccc]">function</span> <span className="text-[#cccccc]">sendCrossChain</span>(<span className="text-gray-400">uint256</span> amount) <span className="text-[#cccccc]">external payable</span> {"{"}
-                        {"\n  "}<span className="text-[#cccccc]">bytes</span> <span className="text-[#cccccc]">memory</span> payload = abi.<span className="text-[#cccccc]">encode</span>(amount);
-                        {"\n  "}<span className="text-[#cccccc]">uint256</span> fee = entangle.<span className="text-[#cccccc]">getRequiredFee</span>(dstChainId, payload.length);
-                        {"\n  "}<span className="text-gray-500">// 1. Dispatch Message</span>
-                        {"\n  "}entangle.<span className="text-[#cccccc]">sendMessage</span>{"{"}<span className="text-[#cccccc]">value</span>: fee{"}"}(dstChainId, dstAddr, payload);
-                        {"\n"}{"}"}
-                      </code>
-                    </pre>
-                  </div>
-                </div>
-
-                {/* Arrow down */}
-                <div className="flex justify-center -my-1 relative z-10 py-1">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <polyline points="19 12 12 19 5 12"></polyline>
-                  </svg>
-                </div>
-
-                {/* Destination Block Wrapper */}
-                <div className="relative pt-6">
-                  <div className="absolute right-0 top-0 text-[#cccccc] type-label flex items-center gap-2">
-                    Destination <span className="text-sm md:text-lg leading-none">&rarr;</span>
-                  </div>
-
-                  <div className="rounded-[12px] border border-[#cccccc]/20 bg-black/20 backdrop-blur-md shadow-[0_0_30px_rgba(0,0,0,0.4)] shadow-inner w-full">
-                    <div className="bg-black/40 border-b border-[#ffffff10] py-2 px-4 md:py-3 md:px-5 flex items-center gap-3 backdrop-blur-sm">
-                      <div className="flex gap-2 shrink-0">
-                        <div className="w-3 h-3 rounded-full bg-[#b5b5b5]" />
-                        <div className="w-3 h-3 rounded-full bg-[#8a8a8a]" />
-                        <div className="w-3 h-3 rounded-full bg-[#d8d8d8]" />
-                      </div>
-                      <div className="type-label font-medium text-gray-500 ml-2 overflow-hidden text-ellipsis whitespace-nowrap tracking-widest">Receiver.sol (Destination Chain)</div>
-                    </div>
-
-                    <pre className="px-4 py-3 md:px-6 md:py-4 leading-relaxed text-[#c9c9d1] overflow-x-auto text-[13px] sm:text-[14px] md:text-[15px] font-mono">
-                      <code>
-                        <span className="text-[#cccccc]">function</span> <span className="text-[#cccccc]">receiveEntangleMessage</span>(
-                        {"\n  "}<span className="text-[#cccccc]">bytes</span> <span className="text-[#cccccc]">memory</span> payload, <span className="text-[#cccccc]">bytes</span> <span className="text-[#cccccc]">memory</span> sigs, ...
-                        {"\n"}) <span className="text-[#cccccc]">external payable</span> {"{"}
-                        {"\n  "}<span className="text-gray-500">// 2. Verify Origin (Security)</span>
-                        {"\n  "}<span className="text-[#cccccc]">require</span>(<span className="text-[#cccccc]">msg.sender</span> == <span className="text-[#cccccc]">address</span>(entangle), "Only Entangle");
-                        {"\n  "}<span className="text-gray-500">// 3. Execute Logic</span>
-                        {"\n  "}<span className="text-[#cccccc]">uint256</span> amount = abi.<span className="text-[#cccccc]">decode</span>(payload, (<span className="text-[#cccccc]">uint256</span>));
-                        {"\n  "}<span className="text-[#cccccc]">_mint</span>(amount);
-                        {"\n"}{"}"}
-                      </code>
-                    </pre>
-                  </div>
-                </div>
-
-              </div>
+            <div className="flex flex-col items-center text-center w-full relative z-10 mb-8 pt-4">
+              <h2 className="type-title mb-2 text-metallic-premium drop-shadow-2xl">
+                Build. Earn. Scale.
+              </h2>
             </div>
-          </motion.div>
+
+            {/* 3 Columns architecture grid */}
+            <div className="relative z-10 w-full max-w-[1020px] mx-auto flex flex-col lg:flex-row border-x border-b border-white/5 rounded-b-[4px] bg-black/20 backdrop-blur-md shadow-inner">
+
+              {/* Verticle Dividers are now applied as right-borders on the first two cards */}
+
+              {/* 1. Developers */}
+              <div className="flex-1 border-t-[3px] border-[#cccccc] p-8 lg:p-10 flex flex-col relative z-10 border-b border-white/5 lg:border-b-0 lg:border-r hover:bg-white/5 transition-colors">
+                <div className="w-[50px] h-[50px] rounded-full bg-[#cccccc]/10 flex items-center justify-center mb-8">
+                  <svg className="w-5 h-5 text-[#cccccc]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div className="text-white text-[28px] font-bold mb-4">Developers</div>
+                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
+                  Integrate omnichain messaging in minutes. One SDK for EVM, Solana, and Cosmos.
+                </div>
+
+                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
+                  <div><span className="text-[#cccccc]">&gt;</span> npm install @entangle/sdk</div>
+                  <div><span className="text-[#cccccc]">&gt;</span> import {'{'} Entangle {'}'}</div>
+                </div>
+
+                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                  Read the Docs
+                </button>
+
+                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center gap-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.699-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" /></svg>
+                  View GitHub
+                </div>
+              </div>
+
+              {/* 2. Operators */}
+              <div className="flex-1 bg-transparent border-t-[3px] border-[#cccccc] p-8 lg:p-10 flex flex-col relative z-10 border-b border-white/5 lg:border-b-0 lg:border-r hover:bg-white/5 transition-colors">
+                <div className="w-[50px] h-[50px] rounded-full bg-[#cccccc]/10 flex items-center justify-center mb-8">
+                  <svg className="w-5 h-5 text-[#cccccc]" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v4H4zm0 8h16v4H4zm2-6h2v2H6zm0 8h2v2H6z" /></svg>
+                </div>
+                <div className="text-white text-[28px] font-bold mb-4">Operators</div>
+                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
+                  Secure the network and earn dual rewards. Run Validators, Scanners, or Relay Miners.
+                </div>
+
+                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
+                  <div><span className="text-[#cccccc]">$</span> 70% Relay Rewards</div>
+                  <div><span className="text-[#cccccc]">$</span> 30% Scanner Rewards</div>
+                </div>
+
+                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                  Run a Node
+                </button>
+
+                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center gap-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M5 9h4v12H5zm7-5h4v17h-4zm7 8h4v9h-4z" /></svg>
+                  Subnet Stats
+                </div>
+              </div>
+
+              {/* 3. Community */}
+              <div className="flex-1 border-t-[3px] border-[#ffffff] p-8 lg:p-10 flex flex-col relative z-10 border-b lg:border-b-0 border-white/5 hover:bg-white/5 transition-colors">
+                <div className="w-[50px] h-[50px] rounded-full bg-[#222] flex items-center justify-center mb-8">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05.02.01.03.03.04.04 1.14.83 1.93 1.94 1.93 3.41V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" /></svg>
+                </div>
+                <div className="text-white text-[28px] font-bold mb-4">Community</div>
+                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
+                  Join the conversation. Governance proposals, ecosystem updates, and support.
+                </div>
+
+                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
+                  <div><span className="text-white">#</span> announcements</div>
+                  <div><span className="text-white">#</span> governance</div>
+                </div>
+
+                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                  Join Discord
+                </button>
+
+                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center text-center">
+                  Follow Us
+                </div>
+              </div>
+
+            </div>
+          </div>
         </section>
-
-
-
 
 
         {false && (
@@ -1441,212 +1642,6 @@ export default function Home() {
                 </div>
 
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="reference-run" className="w-full relative z-10 my-24 md:my-32 px-6">
-          <div className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
-
-
-
-            <div className="flex flex-col items-center text-center w-full relative z-10 mb-6 pt-3">
-              <h2 className="type-title mb-2 text-metallic-premium drop-shadow-2xl">
-                It&apos;s Live
-              </h2>
-            </div>
-
-            {/* Top Metrics Row */}
-            <div className="relative z-10 flex flex-col md:flex-row gap-4 mb-8 w-full max-w-[950px] mx-auto">
-              {/* 8.3s */}
-              <div className="flex-1 border-l-[3px] border-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors p-5 shadow-lg">
-                <div className="text-[44px] font-bold text-[#cccccc] leading-none mb-2 drop-shadow-[0_0_15px_rgba(204,204,204,0.2)] mt-1">8.3s</div>
-                <div className="text-[#888] type-label mb-1 font-semibold">Fastest Delivery</div>
-                <div className="text-[#555] type-label leading-relaxed">Solana &rarr; Arbitrum</div>
-              </div>
-
-              {/* 8/8 */}
-              <div className="flex-1 border-l-[3px] border-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors p-5 shadow-lg">
-                <div className="text-[44px] font-bold text-[#cccccc] leading-none mb-2 drop-shadow-[0_0_15px_rgba(204,204,204,0.2)] mt-1">8/8</div>
-                <div className="text-[#888] type-label mb-1 font-semibold">Consecutive Runs</div>
-                <div className="text-[#555] type-label leading-relaxed">100% Success Rate</div>
-              </div>
-
-              {/* 213K */}
-              <div className="flex-1 border-l-[3px] border-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors p-5 shadow-lg">
-                <div className="text-[44px] font-bold text-[#cccccc] leading-none mb-2 drop-shadow-[0_0_15px_rgba(204,204,204,0.2)] mt-1">213K</div>
-                <div className="text-[#888] type-label mb-1 font-semibold">Gas Used</div>
-                <div className="text-[#555] type-label leading-relaxed">Reference Delivery</div>
-              </div>
-            </div>
-
-            {/* Main Reference Run Container */}
-            <div className="relative z-10 w-full max-w-[950px] mx-auto border border-white/5 bg-black/20 backdrop-blur-md rounded-[10px] shadow-inner overflow-hidden">
-
-              {/* Header Slice */}
-              <div className="bg-white/[0.03] px-5 py-2 flex items-center justify-between border-b border-white/5">
-                <div className="text-[11px]">
-                  <span className="text-[#666]">Reference Run ID:</span>
-                  <span className="text-white font-bold ml-2">#TEST-2026-03-17-A</span>
-                </div>
-                <div className="bg-[#cccccc] text-black font-bold type-label px-3 py-1.5 rounded-[4px] flex items-center gap-1.5 shadow-[0_0_15px_rgba(204,204,204,0.3)]">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><path d="M5 13l4 4L19 7"></path></svg>
-                  Verified
-                </div>
-              </div>
-
-              {/* Execution Diagram */}
-              <div className="relative px-5 py-10 md:py-14 flex flex-col md:flex-row items-start justify-between gap-8 md:gap-0">
-
-                {/* Connecting Line - starts at right edge of left circle, ends at left edge of right circle */}
-                <div className="hidden md:block absolute top-[calc(3.5rem+36px)] left-[calc(1.25rem+126px)] right-[calc(1.25rem+126px)] h-[1.5px] bg-gradient-to-r from-[#cccccc]/80 via-[#111111] to-[#cccccc]/80 z-0 shadow-[0_0_15px_rgba(204,204,204,0.4)]"></div>
-
-                {/* Left Node (Sepolia) */}
-                <div className="relative z-10 flex flex-col items-center text-center w-full md:w-[180px]">
-                  <div className="w-[72px] h-[72px] rounded-full border-[2px] border-[#cccccc] bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(204,204,204,0.3)] flex items-center justify-center mb-3 z-10 hover:bg-black/60 transition-colors">
-                    <svg className="w-[30px] h-[30px] text-white" viewBox="0 0 32 32" fill="currentColor">
-                      <path d="M15.925 23.969L15.823 24l-7.447-4.391 7.553 10.638 7.57-10.638-7.574 4.36zM15.986 0L8.358 12.67l7.625 4.542 7.643-4.542L15.986 0z" />
-                    </svg>
-                  </div>
-                  <div className="type-subtitle text-white mb-1.5">Sepolia</div>
-                  <div className="text-[#666] text-[12px] mb-1.5 whitespace-nowrap">Message Dispatched</div>
-                  <div className="bg-[#cccccc]/10 text-[#cccccc] border border-[#cccccc]/20 rounded-[4px] px-2.5 py-1 text-[11px] mb-3 min-w-[130px]">
-                    0x4f90576e...
-                  </div>
-                  <div className="text-[#555] text-[10px] bg-transparent mt-0.5">Block 10464665</div>
-                </div>
-
-                {/* Middle Node (ENTANGLE RELAY) - Desktop: absolutely centered on the line */}
-                <div className="hidden md:flex absolute left-1/2 top-[calc(3.5rem+36px)] -translate-x-1/2 -translate-y-1/2 z-10 w-[170px] bg-[#0a0a0f]/80 hover:bg-white/5 transition-colors backdrop-blur-md border border-white/5 rounded-[8px] p-4 flex-col items-center text-center">
-                  <div className="text-[#777] type-label mb-1">Entangle Relay</div>
-                  <div className="text-white text-[26px] font-bold mb-0.5">8.3s</div>
-                  <div className="flex items-center gap-1 text-[#cccccc] text-[9px] font-bold mt-0.5">
-                    <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
-                    Optimized
-                  </div>
-                </div>
-                {/* Middle Node (ENTANGLE RELAY) - Mobile: inline flow */}
-                <div className="md:hidden relative z-10 w-[170px] bg-transparent hover:bg-white/5 transition-colors backdrop-blur-sm border border-white/5 rounded-[8px] p-4 flex flex-col items-center text-center">
-                  <div className="text-[#777] type-label mb-1">Entangle Relay</div>
-                  <div className="text-white text-[26px] font-bold mb-0.5">8.3s</div>
-                  <div className="flex items-center gap-1 text-[#cccccc] text-[9px] font-bold mt-0.5">
-                    <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
-                    Optimized
-                  </div>
-                </div>
-
-                {/* Right Node (Arbitrum) */}
-                <div className="relative z-10 flex flex-col items-center text-center w-full md:w-[180px]">
-                  <div className="w-[72px] h-[72px] rounded-full border-[2px] border-[#cccccc] bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(204,204,204,0.3)] flex items-center justify-center mb-3 z-10 hover:bg-black/60 transition-colors">
-                    <svg className="w-[30px] h-[30px] text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zm0 6l-10 5 10 5 10-5-10-5zm0 6l-10 5 10 5 10-5-10-5z" />
-                    </svg>
-                  </div>
-                  <div className="type-subtitle text-white mb-1.5 whitespace-nowrap">Arbitrum Sepolia</div>
-                  <div className="text-[#666] text-[12px] mb-1.5 whitespace-nowrap">Message Received</div>
-                  <div className="bg-[#cccccc]/10 text-[#cccccc] border border-[#cccccc]/20 rounded-[4px] px-2.5 py-1 text-[11px] mb-3 min-w-[130px]">
-                    0xf802b3b6...
-                  </div>
-                  <div className="text-[#555] text-[10px] bg-transparent mt-0.5">isRelayed = true</div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-
-
-        <section id="actions" className="w-full relative z-10 my-24 md:my-32 px-6">
-          <div className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
-
-
-            <div className="flex flex-col items-center text-center w-full relative z-10 mb-8 pt-4">
-              <h2 className="type-title mb-2 text-metallic-premium drop-shadow-2xl">
-                Build. Earn. Scale.
-              </h2>
-            </div>
-
-            {/* 3 Columns architecture grid */}
-            <div className="relative z-10 w-full max-w-[1020px] mx-auto flex flex-col lg:flex-row border-x border-b border-white/5 rounded-b-[4px] bg-black/20 backdrop-blur-md shadow-inner">
-
-              {/* Verticle Dividers are now applied as right-borders on the first two cards */}
-
-              {/* 1. Developers */}
-              <div className="flex-1 border-t-[3px] border-[#cccccc] p-8 lg:p-10 flex flex-col relative z-10 border-b border-white/5 lg:border-b-0 lg:border-r hover:bg-white/5 transition-colors">
-                <div className="w-[50px] h-[50px] rounded-full bg-[#cccccc]/10 flex items-center justify-center mb-8">
-                  <svg className="w-5 h-5 text-[#cccccc]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                </div>
-                <div className="text-white text-[28px] font-bold mb-4">Developers</div>
-                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
-                  Integrate omnichain messaging in minutes. One SDK for EVM, Solana, and Cosmos.
-                </div>
-
-                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
-                  <div><span className="text-[#cccccc]">&gt;</span> npm install @entangle/sdk</div>
-                  <div><span className="text-[#cccccc]">&gt;</span> import {'{'} Entangle {'}'}</div>
-                </div>
-
-                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                  Read the Docs
-                </button>
-
-                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.699-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" /></svg>
-                  View GitHub
-                </div>
-              </div>
-
-              {/* 2. Operators */}
-              <div className="flex-1 bg-transparent border-t-[3px] border-[#cccccc] p-8 lg:p-10 flex flex-col relative z-10 border-b border-white/5 lg:border-b-0 lg:border-r hover:bg-white/5 transition-colors">
-                <div className="w-[50px] h-[50px] rounded-full bg-[#cccccc]/10 flex items-center justify-center mb-8">
-                  <svg className="w-5 h-5 text-[#cccccc]" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v4H4zm0 8h16v4H4zm2-6h2v2H6zm0 8h2v2H6z" /></svg>
-                </div>
-                <div className="text-white text-[28px] font-bold mb-4">Operators</div>
-                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
-                  Secure the network and earn dual rewards. Run Validators, Scanners, or Relay Miners.
-                </div>
-
-                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
-                  <div><span className="text-[#cccccc]">$</span> 70% Relay Rewards</div>
-                  <div><span className="text-[#cccccc]">$</span> 30% Scanner Rewards</div>
-                </div>
-
-                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                  Run a Node
-                </button>
-
-                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M5 9h4v12H5zm7-5h4v17h-4zm7 8h4v9h-4z" /></svg>
-                  Subnet Stats
-                </div>
-              </div>
-
-              {/* 3. Community */}
-              <div className="flex-1 border-t-[3px] border-[#ffffff] p-8 lg:p-10 flex flex-col relative z-10 border-b lg:border-b-0 border-white/5 hover:bg-white/5 transition-colors">
-                <div className="w-[50px] h-[50px] rounded-full bg-[#222] flex items-center justify-center mb-8">
-                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05.02.01.03.03.04.04 1.14.83 1.93 1.94 1.93 3.41V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" /></svg>
-                </div>
-                <div className="text-white text-[28px] font-bold mb-4">Community</div>
-                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
-                  Join the conversation. Governance proposals, ecosystem updates, and support.
-                </div>
-
-                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
-                  <div><span className="text-white">#</span> announcements</div>
-                  <div><span className="text-white">#</span> governance</div>
-                </div>
-
-                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                  Join Discord
-                </button>
-
-                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center text-center">
-                  Follow Us
-                </div>
-              </div>
-
             </div>
           </div>
         </section>
