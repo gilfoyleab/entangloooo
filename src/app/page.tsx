@@ -604,6 +604,239 @@ export default function Home() {
           </motion.div>
         </section>
 
+        <section id="protocol-flow" className="w-full relative z-10 my-24 md:my-32 px-6">
+          <div className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
+
+            <div className="flex flex-col items-center text-center w-full relative z-10 mb-10 pt-4">
+              <div className="type-label text-[#888] mb-4 uppercase tracking-widest">
+                Protocol Flow
+              </div>
+              <h2 className="type-title mb-2 text-metallic-premium drop-shadow-2xl">
+                Three steps. Fully autonomous.
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5 border border-white/5 rounded-[12px] bg-black/20 backdrop-blur-md shadow-inner relative z-10">
+
+              {/* Card 1: Scan */}
+              <div className="p-6 md:p-8 flex flex-col items-start hover:bg-white/5 transition-colors">
+                <div className="text-[#555] font-mono text-[10px] tracking-widest mb-8 font-bold">01 / 03</div>
+
+                <div className="mb-8 w-10 h-10 relative flex items-center justify-start text-[#cccccc]">
+                  <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="9" strokeDasharray="3 3.5" />
+                    <line x1="12" y1="2" x2="12" y2="5" strokeLinecap="round" />
+                    <line x1="12" y1="19" x2="12" y2="22" strokeLinecap="round" />
+                    <line x1="2" y1="12" x2="5" y2="12" strokeLinecap="round" />
+                    <line x1="19" y1="12" x2="22" y2="12" strokeLinecap="round" />
+                    <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
+                  </svg>
+                </div>
+
+                <h3 className="type-subtitle text-white mb-3">Scan</h3>
+                <p className="type-body text-[#888] mb-10 flex-grow pr-2">
+                  Scanner miners continuously watch source chain contracts for <span className="text-[#cccccc] font-mono text-[12px] bg-[#cccccc]/10 px-1 py-0.5 rounded">MessageDispatched</span> events and report them to validators with cryptographic precision.
+                </p>
+
+                <div className="mt-auto inline-block bg-[#cccccc]/10 text-[#cccccc] text-[10px] px-3 py-1.5 rounded-[4px] font-bold border border-[#cccccc]/20 whitespace-nowrap">
+                  SCANNER MINERS <span className="opacity-70 mx-1">&rarr;</span> 30% TAO
+                </div>
+              </div>
+
+              {/* Card 2: Auction */}
+              <div className="p-6 md:p-8 flex flex-col items-start hover:bg-white/5 transition-colors">
+                <div className="text-[#555] font-mono text-[10px] tracking-widest mb-8 font-bold">02 / 03</div>
+
+                <div className="mb-8 w-10 h-10 relative flex items-center justify-start text-[#cccccc]">
+                  <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <rect x="3" y="4" width="18" height="16" rx="2" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                    <circle cx="8" cy="7" r="1" fill="currentColor" stroke="none" />
+                    <circle cx="12" cy="7" r="1" fill="currentColor" stroke="none" />
+                    <circle cx="16" cy="7" r="1" fill="currentColor" stroke="none" />
+                    <path d="M7 13l5 4 5-4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+
+                <h3 className="type-subtitle text-white mb-3">Auction</h3>
+                <p className="type-body text-[#888] mb-10 flex-grow pr-2">
+                  Validators verify events, collect threshold attestations, and run a transparent relay auction — selecting the optimal miner by latency, gas estimate, and historical accuracy.
+                </p>
+
+                <div className="mt-auto inline-block bg-[#cccccc]/10 text-[#cccccc] text-[10px] px-3 py-1.5 rounded-[4px] font-bold border border-[#cccccc]/20 whitespace-nowrap">
+                  VALIDATORS <span className="opacity-70 mx-1">&rarr;</span> ORCHESTRATION
+                </div>
+              </div>
+
+              {/* Card 3: Relay */}
+              <div className="p-6 md:p-8 flex flex-col items-start hover:bg-white/5 transition-colors">
+                <div className="text-[#555] font-mono text-[10px] tracking-widest mb-8 font-bold">03 / 03</div>
+
+                <div className="mb-8 w-10 h-10 relative flex items-center justify-start text-[#cccccc]">
+                  <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M20 7.5 A 9.5 9.5 0 1 0 20 16.5" strokeLinecap="round" />
+                    <polygon points="21.5,9.5 16.5,12 21.5,14.5" fill="currentColor" stroke="none" />
+                  </svg>
+                </div>
+
+                <h3 className="type-subtitle text-white mb-3">Relay</h3>
+                <p className="type-body text-[#888] mb-10 flex-grow pr-2">
+                  The winning relay miner executes the delivery on the destination chain using the validator-issued threshold signature bundle, then submits cryptographic proof back to earn TAO emissions.
+                </p>
+
+                <div className="mt-auto inline-block bg-[#cccccc]/10 text-[#cccccc] text-[10px] px-3 py-1.5 rounded-[4px] font-bold border border-[#cccccc]/20 whitespace-nowrap">
+                  RELAY MINERS <span className="opacity-70 mx-1">&rarr;</span> 70% TAO
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Competition Table Section */}
+        <section id="competition" className="w-full relative z-10 my-24 md:my-32 px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
+            
+            {/* Header */}
+            <div className="flex flex-col items-center text-center w-full relative z-10 mb-10 pt-4">
+              <div className="type-label text-[#888] mb-4 uppercase tracking-widest">
+                Compare
+              </div>
+              <h2 className="type-title mb-4 text-metallic-premium drop-shadow-2xl">
+                The only relay network with real competition.
+              </h2>
+              <p className="type-body text-[#888] max-w-2xl mx-auto">
+                Existing bridges use trusted relayer sets — fixed operators with no economic pressure to improve. Entangle's Bittensor-native competition changes this fundamental dynamic.
+              </p>
+            </div>
+
+            {/* Inner Table Container */}
+            <div className="border border-white/5 rounded-[12px] bg-black/20 backdrop-blur-md shadow-inner overflow-x-auto relative z-10 p-6 md:p-8">
+              <div className="min-w-[800px] relative">
+                
+                {/* Shiny Highlight behind Entangle column (33% to 50% width) */}
+                <div className="absolute top-10 bottom-10 left-[31%] w-[20%] bg-white/[0.06] blur-[60px] rounded-full pointer-events-none z-0"></div>
+
+                <div className="relative z-10">
+                  {/* Table Header */}
+                  <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-4 text-[11px] uppercase tracking-[0.2em] font-mono font-bold items-end border-b border-white/[0.08] pb-5 mb-2">
+                    <div className="text-[#888] pl-2">Feature</div>
+                    <div className="relative text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">
+                      <div className="absolute top-[-24px] left-0 right-10 h-[2px] bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
+                      Entangle
+                    </div>
+                    <div className="text-[#888]">Wormhole</div>
+                    <div className="text-[#888]">LayerZero</div>
+                    <div className="text-[#888]">Axelar</div>
+                  </div>
+
+                  {/* Rows */}
+                  <div className="flex flex-col">
+                    {[
+                      { f: "Open miner competition", e: "check", w: "cross", l: "cross", a: "cross" },
+                      { f: "Permissionless mining", e: "check", w: "cross", l: "cross", a: "cross" },
+                      { f: "Economic incentives for relayers", e: "TAO emissions", w: "Fixed fees only", l: "Fixed fees only", a: "Fixed fees only" },
+                      { f: "Source-chain-only fee for users", e: "check", w: "cross", l: "Partial", a: "cross" },
+                      { f: "Dynamic gas oracle", e: "check", w: "cross", l: "cross", a: "cross" },
+                      { f: "Two-phase bid competition", e: "gas", w: "cross", l: "cross", a: "cross" },
+                      { f: "Self-sustaining economics", e: "fee", w: "cross", l: "cross", a: "cross" },
+                      { f: "Decentralised chain watching", e: "scan", w: "Guardian set", l: "DVN set", a: "Validator set" },
+                    ].map((row, i) => (
+                      <div key={i} className={`grid grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-4 py-5 hover:bg-white/[0.02] transition-colors items-center text-[13px] ${i !== 7 ? 'border-b border-white/[0.03]' : ''}`}>
+                        <div className="text-white font-medium pl-2 tracking-wide">{row.f}</div>
+                        
+                        <div className="text-white font-medium flex items-center gap-3 tracking-wide drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
+                          {row.e === "check" && <svg className="w-[16px] h-[16px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>}
+                          {row.e === "gas" && <><svg className="w-[16px] h-[16px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> No gas waste</>}
+                        {row.e === "fee" && <><svg className="w-[16px] h-[16px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> Fee flywheel</>}
+                        {row.e === "scan" && <><svg className="w-[16px] h-[16px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> Scanner miners</>}
+                        {row.e !== "check" && row.e !== "gas" && row.e !== "fee" && row.e !== "scan" && row.e}
+                      </div>
+
+                      <div className="text-[#666] font-medium tracking-wide">
+                        {row.w === "cross" ? <svg className="w-[13px] h-[13px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> : row.w}
+                      </div>
+                      <div className="text-[#666] font-medium tracking-wide">
+                        {row.l === "cross" ? <svg className="w-[13px] h-[13px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> : row.l}
+                      </div>
+                      <div className="text-[#666] font-medium tracking-wide">
+                        {row.a === "cross" ? <svg className="w-[13px] h-[13px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> : row.a}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                </div>
+
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+
+        {/* Protocol Properties Section */}
+        {/* Protocol Properties Section */}
+        <section className="w-full relative z-10 my-24 md:my-32 px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
+            
+            {/* Header */}
+            <div className="flex flex-col items-center text-center w-full relative z-10 mb-10 pt-4">
+              <div className="type-label text-[#888] mb-4 uppercase tracking-widest">
+                Protocol Properties
+              </div>
+              <h2 className="type-title mb-4 text-metallic-premium drop-shadow-2xl uppercase">
+                Built for <br className="hidden md:block"/> Permanent Infrastructure.
+              </h2>
+            </div>
+
+            {/* Grid Matrix */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-white/5 rounded-[12px] bg-black/20 backdrop-blur-md shadow-inner relative z-10 overflow-hidden">
+              {[
+                {
+                  title: "TRUSTLESS VERIFICATION",
+                  desc: "Every message is verified by a threshold of independent validators through cryptographic signature bundles. No single party can forge or censor a message. Verification is provable on-chain — not claimed off-chain.",
+                  icon: <svg className="w-[18px] h-[18px] text-[#cccccc]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+                },
+                {
+                  title: "DECENTRALIZED ROUTING",
+                  desc: "An open competitive market of relay miners routes messages. No whitelist. No permissioned set. Any entity can register as a relay miner, compete in auctions, and earn TAO — creating the first truly open relay commodity market.",
+                  icon: <svg className="w-[18px] h-[18px] text-[#cccccc]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                },
+                {
+                  title: "FIVE ECOSYSTEMS",
+                  desc: "EVM, Solana, SUI, Cosmos/CosmWasm, and Stellar — each supported with a native contract, dedicated chain adapter, and custom finality logic. The same protocol, adapted to every execution environment.",
+                  icon: <svg className="w-[18px] h-[18px] text-[#cccccc]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                },
+                {
+                  title: "PROGRAMMABLE INTEROP",
+                  desc: "Arbitrary payload routing — not just token transfers. Send any calldata across any chain. Build cross-chain governance, multichain DeFi, AI-coordinated systems, and interoperable smart contracts with one SDK.",
+                  icon: <svg className="w-[18px] h-[18px] text-[#cccccc]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+                },
+                {
+                  title: "BITTENSOR-NATIVE",
+                  desc: "Built as a Bittensor subnet — scoring is governed by Yuma Consensus, not a team. TAO emissions reward genuine performance. The incentive mechanism is decentralized, auditable, and cannot be gamed by the protocol team.",
+                  icon: <svg className="w-[18px] h-[18px] text-[#cccccc]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                },
+                {
+                  title: "FAILSAFE DELIVERY",
+                  desc: "Every relay round has a priority-ordered standby queue. If the winning relay miner times out or fails, the protocol automatically triggers failover to the next-best standby — preventing any single miner from becoming a delivery bottleneck.",
+                  icon: <svg className="w-[18px] h-[18px] text-[#cccccc]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                }
+              ].map((item, i) => (
+                <div key={i} className={`p-6 md:p-7 lg:p-8 transition-colors group flex flex-col items-start hover:bg-white/[0.02] border-white/5 ${i < 3 ? 'border-b md:border-b-0 lg:border-b' : ''} ${i % 3 !== 2 ? 'border-b lg:border-b-0 lg:border-r' : 'border-b lg:border-b-0'} ${i === 4 || i === 5 ? '!border-b-0' : ''}`}>
+                  <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-[12px] md:text-[13px] font-bold text-white mb-2.5 tracking-wider uppercase font-sans">
+                    {item.title}
+                  </h3>
+                  <p className="text-[12px] lg:text-[13px] text-[#888] leading-[1.65] font-medium mb-0 pr-2">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
         {false && (
           <section id="developers" className="my-24 md:my-32 px-6 w-full max-w-[1100px] mx-auto relative z-10">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative overflow-hidden">
@@ -811,95 +1044,122 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section id="actions" className="w-full relative z-10 my-24 md:my-32 px-6">
+        <section id="realtime-fees" className="w-full relative z-10 my-24 md:my-32 px-6">
           <div className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
 
 
-            <div className="flex flex-col items-center text-center w-full relative z-10 mb-8 pt-4">
-              <h2 className="type-title mb-2 text-metallic-premium drop-shadow-2xl">
-                Infrastructure for a Multi-chain World
+
+            <div className="flex flex-col items-center justify-center text-center w-full relative z-10 mb-12 pt-6">
+              <h2 className="type-title text-metallic-premium drop-shadow-2xl text-center w-full">
+                Incentives Aligned by Design
               </h2>
             </div>
 
-            {/* 3 Columns architecture grid */}
-            <div className="relative z-10 w-full max-w-[1020px] mx-auto flex flex-col lg:flex-row border-x border-b border-white/5 rounded-b-[4px] bg-black/20 backdrop-blur-md shadow-inner">
+            {/* Flow Diagram Container */}
+            <div className="relative flex flex-col xl:flex-row items-center justify-center gap-[40px] xl:gap-[0px] w-full max-w-[950px] mx-auto z-10">
 
-              {/* Verticle Dividers are now applied as right-borders on the first two cards */}
-
-              {/* 1. Developers */}
-              <div className="flex-1 border-t-[3px] border-[#cccccc] p-8 lg:p-10 flex flex-col relative z-10 border-b border-white/5 lg:border-b-0 lg:border-r hover:bg-white/5 transition-colors">
-                <div className="w-[50px] h-[50px] rounded-full bg-[#cccccc]/10 flex items-center justify-center mb-8">
-                  <svg className="w-5 h-5 text-[#cccccc]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              {/* 1. Left Block: User / dApp */}
+              <div className="w-full sm:w-[280px] xl:w-[260px] bg-black/20 backdrop-blur-md shadow-inner border border-[#444444] rounded-[10px] p-5 relative z-10 shrink-0">
+                <div className="flex justify-between items-start mb-4 mt-1">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M21 7.28V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2.28c.59-.35 1-.98 1-1.72V9c0-.74-.41-1.37-1-1.72zM20 9v6h-2V9h2zM5 19V5h14v2h-6c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h6v2H5z" /></svg>
+                  <div className="flex gap-2 mt-0.5 items-center">
+                    <svg className="w-[12px] h-[12px] text-white" viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M15.925 23.969L15.823 24l-7.447-4.391 7.553 10.638 7.57-10.638-7.574 4.36zM15.986 0L8.358 12.67l7.625 4.542 7.643-4.542L15.986 0z" />
+                    </svg>
+                    <div className="w-[13px] h-[13px] rounded-full bg-[#cccccc]"></div>
+                  </div>
                 </div>
-                <div className="text-white text-[28px] font-bold mb-4">Developers</div>
-                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
-                  Integrate omnichain messaging in minutes. One SDK for EVM, Solana, and Cosmos.
-                </div>
+                <div className="type-subtitle text-white mb-1">User / dApp</div>
+                <div className="text-[#666] type-body mb-4">Calls <span className="bg-[#0b1d26] text-[#cccccc] px-1.5 py-0.5 rounded text-[12px] border border-[#cccccc]/10 font-mono">sendMessage()</span></div>
+                <div className="text-[#bbb] type-body font-semibold">Pays Native Gas Fee</div>
 
-                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
-                  <div><span className="text-[#cccccc]">&gt;</span> npm install @entangle/sdk</div>
-                  <div><span className="text-[#cccccc]">&gt;</span> import {'{'} Entangle {'}'}</div>
-                </div>
-
-                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                  Read the Docs
-                </button>
-
-                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.699-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" /></svg>
-                  View GitHub
-                </div>
+                {/* Outbound connection line */}
+                <div className="hidden xl:block absolute right-[-40px] top-1/2 w-[40px] h-[1.5px] bg-[#777777] -translate-y-1/2 z-0"></div>
+                {/* Arrow Head */}
+                <div className="hidden xl:block absolute right-[-40px] top-1/2 w-[0] h-[0] border-t-[5px] border-b-[5px] border-l-[6px] border-transparent border-l-[#777777] transform -translate-y-1/2 z-10"></div>
               </div>
 
-              {/* 2. Operators */}
-              <div className="flex-1 bg-transparent border-t-[3px] border-[#cccccc] p-8 lg:p-10 flex flex-col relative z-10 border-b border-white/5 lg:border-b-0 lg:border-r hover:bg-white/5 transition-colors">
-                <div className="w-[50px] h-[50px] rounded-full bg-[#cccccc]/10 flex items-center justify-center mb-8">
-                  <svg className="w-5 h-5 text-[#cccccc]" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v4H4zm0 8h16v4H4zm2-6h2v2H6zm0 8h2v2H6z" /></svg>
-                </div>
-                <div className="text-white text-[28px] font-bold mb-4">Operators</div>
-                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
-                  Secure the network and earn dual rewards. Run Validators, Scanners, or Relay Miners.
+              {/* spacer */}
+              <div className="hidden xl:block w-[40px] shrink-0"></div>
+
+              {/* 2. Middle Block: ENTANGLE CORE */}
+              <div className="w-[280px] bg-black/20 backdrop-blur-md shadow-inner border border-[#444444] rounded-[8px] p-5 relative z-10 shrink-0 shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+                <div className="absolute top-[-1px] left-0 right-0 h-[3px] bg-white rounded-t-[8px] opacity-100 shadow-[0_0_15px_rgba(255,255,255,0.8)]"></div>
+
+                <div className="text-white type-label mb-4 mt-0.5">Entangle Core</div>
+
+                <div className="space-y-4">
+                  {/* Gas Oracle */}
+                  <div className="bg-transparent hover:bg-white/5 transition-colors border border-white/5 rounded-[6px] p-3 flex gap-4 items-center">
+                    <div className="bg-[#cccccc]/10 p-2.5 rounded-[4px] border border-[#cccccc]/20">
+                      <svg className="w-[16px] h-[16px] text-[#cccccc]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11C16.17 7 15.5 7.93 15.5 9v11c0 .55-.45 1-1 1s-1-.45-1-1v-4c0-2.21-1.79-4-4-4h-1V7c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v13h8c0 1.66 1.34 3 3 3s3-1.34 3-3V9c0-.46.15-.88.4-1.22l3.37-3.37zM10 18H5V8h4.5c.28 0 .5.22.5.5v9z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-white type-body font-bold mb-0.5 leading-none">Gas Oracle</div>
+                      <div className="text-[#666] text-[10px]">Median price every 2m</div>
+                    </div>
+                  </div>
+
+                  {/* Circuit Breaker */}
+                  <div className="bg-transparent hover:bg-white/5 transition-colors border border-white/5 rounded-[6px] p-3 flex gap-4 items-center">
+                    <div className="bg-[#cccccc]/10 p-2.5 rounded-[4px] border border-[#cccccc]/20">
+                      <svg className="w-[16px] h-[16px] text-[#cccccc]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-white type-body font-bold mb-0.5 leading-none">Circuit Breaker</div>
+                      <div className="text-[#666] text-[10px]">Staleness check &gt;50 blks</div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
-                  <div><span className="text-[#cccccc]">$</span> 70% Relay Rewards</div>
-                  <div><span className="text-[#cccccc]">$</span> 30% Scanner Rewards</div>
-                </div>
+                {/* Outbound connection lines (Forking UP and DOWN from Center) */}
+                {/* Top diagonal line */}
+                <div className="hidden xl:block absolute right-[-62px] top-1/2 w-[62px] h-[1.5px] bg-[#777777] transform rotate-[35deg] origin-left z-0"></div>
+                {/* Bottom diagonal line */}
+                <div className="hidden xl:block absolute right-[-62px] top-1/2 w-[62px] h-[1.5px] bg-[#777777] transform rotate-[-35deg] origin-left z-0"></div>
 
-                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                  Run a Node
-                </button>
-
-                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M5 9h4v12H5zm7-5h4v17h-4zm7 8h4v9h-4z" /></svg>
-                  Subnet Stats
-                </div>
+                {/* Note: since elements origin from left, a positive rotation angles downwards. Negative angles upwards. We swapped them if needed, but rotate-[35deg] visually goes DOWN, rotate-[-35deg] goes UP relative to right-facing vectors. */}
               </div>
 
-              {/* 3. Community */}
-              <div className="flex-1 border-t-[3px] border-[#ffffff] p-8 lg:p-10 flex flex-col relative z-10 border-b lg:border-b-0 border-white/5 hover:bg-white/5 transition-colors">
-                <div className="w-[50px] h-[50px] rounded-full bg-[#222] flex items-center justify-center mb-8">
-                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05.02.01.03.03.04.04 1.14.83 1.93 1.94 1.93 3.41V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" /></svg>
-                </div>
-                <div className="text-white text-[28px] font-bold mb-4">Community</div>
-                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
-                  Join the conversation. Governance proposals, ecosystem updates, and support.
+              {/* gap for the branching lines */}
+              <div className="hidden xl:block w-[50px] shrink-0 relative z-0"></div>
+
+              {/* 3. Right Blocks Column */}
+              <div className="flex flex-col gap-4 xl:gap-4 shrink-0 w-full sm:w-[320px] xl:w-[300px]">
+
+                {/* Top: 30% Protocol Treasury */}
+                <div className="bg-black/20 backdrop-blur-md shadow-inner border border-[#444444] border-l-[3px] border-l-[#cccccc] rounded-[8px] p-5 shadow-[0_0_20px_rgba(204,204,204,0.06)] relative z-10 w-full overflow-hidden hover:bg-white/5 transition-colors">
+                  <div className="absolute inset-0 border border-[#cccccc]/[0.05] rounded-[8px] pointer-events-none"></div>
+                  <div className="text-[48px] font-bold text-[#cccccc] leading-none mb-1 mt-0.5 drop-shadow-[0_0_15px_rgba(204,204,204,0.3)]">30%</div>
+                  <div className="text-white type-body xl:type-subtitle mb-2">Protocol Treasury</div>
+                  <div className="text-[#888] text-[11px] leading-relaxed mb-4 w-[95%]">
+                    Accumulates native assets (ETH, SOL, ATOM). Funds operations and growth.
+                  </div>
+
+                  <div className="inline-block bg-[#cccccc]/10 text-[#cccccc] text-[10px] px-2 py-1 rounded-[4px] font-bold">
+                    On-chain
+                  </div>
                 </div>
 
-                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
-                  <div><span className="text-white">#</span> announcements</div>
-                  <div><span className="text-white">#</span> governance</div>
+                {/* Bottom: 70% Relay Reserve */}
+                <div className="bg-black/20 backdrop-blur-md shadow-inner border border-[#444444] border-l-[3px] border-l-[#cccccc] rounded-[8px] p-5 shadow-[0_0_20px_rgba(204,204,204,0.06)] relative z-10 w-full overflow-hidden hover:bg-white/5 transition-colors">
+                  <div className="absolute inset-0 border border-[#cccccc]/[0.05] rounded-[8px] pointer-events-none"></div>
+                  <div className="text-[48px] font-bold text-[#cccccc] leading-none mb-1 mt-0.5 drop-shadow-[0_0_15px_rgba(204,204,204,0.3)]">70%</div>
+                  <div className="text-white type-body xl:type-subtitle mb-2">Relay Reserve</div>
+                  <div className="text-[#888] text-[11px] leading-relaxed mb-4 w-[95%]">
+                    Direct rewards for Relay Miners who successfully execute transactions.
+                  </div>
+
+                  <div className="inline-block bg-[#cccccc]/10 text-[#cccccc] text-[10px] px-2 py-1 rounded-[4px] font-bold">
+                    Miner Reward
+                  </div>
                 </div>
 
-                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                  Join Discord
-                </button>
-
-                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center text-center">
-                  Follow Us
-                </div>
               </div>
-
             </div>
           </div>
         </section>
@@ -1458,122 +1718,95 @@ export default function Home() {
 
 
 
-        <section id="realtime-fees" className="w-full relative z-10 my-24 md:my-32 px-6">
+        <section id="actions" className="w-full relative z-10 my-24 md:my-32 px-6">
           <div className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
 
 
-
-            <div className="flex flex-col items-center justify-center text-center w-full relative z-10 mb-12 pt-6">
-              <h2 className="type-title text-metallic-premium drop-shadow-2xl text-center w-full">
-                Incentives Aligned by Design
+            <div className="flex flex-col items-center text-center w-full relative z-10 mb-8 pt-4">
+              <h2 className="type-title mb-2 text-metallic-premium drop-shadow-2xl">
+                Infrastructure for a Multi-chain World
               </h2>
             </div>
 
-            {/* Flow Diagram Container */}
-            <div className="relative flex flex-col xl:flex-row items-center justify-center gap-[40px] xl:gap-[0px] w-full max-w-[950px] mx-auto z-10">
+            {/* 3 Columns architecture grid */}
+            <div className="relative z-10 w-full max-w-[1020px] mx-auto flex flex-col lg:flex-row border-x border-b border-white/5 rounded-b-[4px] bg-black/20 backdrop-blur-md shadow-inner">
 
-              {/* 1. Left Block: User / dApp */}
-              <div className="w-full sm:w-[280px] xl:w-[260px] bg-black/20 backdrop-blur-md shadow-inner border border-[#444444] rounded-[10px] p-5 relative z-10 shrink-0">
-                <div className="flex justify-between items-start mb-4 mt-1">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M21 7.28V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2.28c.59-.35 1-.98 1-1.72V9c0-.74-.41-1.37-1-1.72zM20 9v6h-2V9h2zM5 19V5h14v2h-6c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h6v2H5z" /></svg>
-                  <div className="flex gap-2 mt-0.5 items-center">
-                    <svg className="w-[12px] h-[12px] text-white" viewBox="0 0 32 32" fill="currentColor">
-                      <path d="M15.925 23.969L15.823 24l-7.447-4.391 7.553 10.638 7.57-10.638-7.574 4.36zM15.986 0L8.358 12.67l7.625 4.542 7.643-4.542L15.986 0z" />
-                    </svg>
-                    <div className="w-[13px] h-[13px] rounded-full bg-[#cccccc]"></div>
-                  </div>
+              {/* Verticle Dividers are now applied as right-borders on the first two cards */}
+
+              {/* 1. Developers */}
+              <div className="flex-1 border-t-[3px] border-[#cccccc] p-8 lg:p-10 flex flex-col relative z-10 border-b border-white/5 lg:border-b-0 lg:border-r hover:bg-white/5 transition-colors">
+                <div className="w-[50px] h-[50px] rounded-full bg-[#cccccc]/10 flex items-center justify-center mb-8">
+                  <svg className="w-5 h-5 text-[#cccccc]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                 </div>
-                <div className="type-subtitle text-white mb-1">User / dApp</div>
-                <div className="text-[#666] type-body mb-4">Calls <span className="bg-[#0b1d26] text-[#cccccc] px-1.5 py-0.5 rounded text-[12px] border border-[#cccccc]/10 font-mono">sendMessage()</span></div>
-                <div className="text-[#bbb] type-body font-semibold">Pays Native Gas Fee</div>
+                <div className="text-white text-[28px] font-bold mb-4">Developers</div>
+                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
+                  Integrate omnichain messaging in minutes. One SDK for EVM, Solana, and Cosmos.
+                </div>
 
-                {/* Outbound connection line */}
-                <div className="hidden xl:block absolute right-[-40px] top-1/2 w-[40px] h-[1.5px] bg-[#777777] -translate-y-1/2 z-0"></div>
-                {/* Arrow Head */}
-                <div className="hidden xl:block absolute right-[-40px] top-1/2 w-[0] h-[0] border-t-[5px] border-b-[5px] border-l-[6px] border-transparent border-l-[#777777] transform -translate-y-1/2 z-10"></div>
+                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
+                  <div><span className="text-[#cccccc]">&gt;</span> npm install @entangle/sdk</div>
+                  <div><span className="text-[#cccccc]">&gt;</span> import {'{'} Entangle {'}'}</div>
+                </div>
+
+                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                  Read the Docs
+                </button>
+
+                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center gap-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.699-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" /></svg>
+                  View GitHub
+                </div>
               </div>
 
-              {/* spacer */}
-              <div className="hidden xl:block w-[40px] shrink-0"></div>
-
-              {/* 2. Middle Block: ENTANGLE CORE */}
-              <div className="w-[280px] bg-black/20 backdrop-blur-md shadow-inner border border-[#444444] rounded-[8px] p-5 relative z-10 shrink-0 shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
-                <div className="absolute top-[-1px] left-0 right-0 h-[3px] bg-white rounded-t-[8px] opacity-100 shadow-[0_0_15px_rgba(255,255,255,0.8)]"></div>
-
-                <div className="text-white type-label mb-4 mt-0.5">Entangle Core</div>
-
-                <div className="space-y-4">
-                  {/* Gas Oracle */}
-                  <div className="bg-transparent hover:bg-white/5 transition-colors border border-white/5 rounded-[6px] p-3 flex gap-4 items-center">
-                    <div className="bg-[#cccccc]/10 p-2.5 rounded-[4px] border border-[#cccccc]/20">
-                      <svg className="w-[16px] h-[16px] text-[#cccccc]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11C16.17 7 15.5 7.93 15.5 9v11c0 .55-.45 1-1 1s-1-.45-1-1v-4c0-2.21-1.79-4-4-4h-1V7c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v13h8c0 1.66 1.34 3 3 3s3-1.34 3-3V9c0-.46.15-.88.4-1.22l3.37-3.37zM10 18H5V8h4.5c.28 0 .5.22.5.5v9z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-white type-body font-bold mb-0.5 leading-none">Gas Oracle</div>
-                      <div className="text-[#666] text-[10px]">Median price every 2m</div>
-                    </div>
-                  </div>
-
-                  {/* Circuit Breaker */}
-                  <div className="bg-transparent hover:bg-white/5 transition-colors border border-white/5 rounded-[6px] p-3 flex gap-4 items-center">
-                    <div className="bg-[#cccccc]/10 p-2.5 rounded-[4px] border border-[#cccccc]/20">
-                      <svg className="w-[16px] h-[16px] text-[#cccccc]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-white type-body font-bold mb-0.5 leading-none">Circuit Breaker</div>
-                      <div className="text-[#666] text-[10px]">Staleness check &gt;50 blks</div>
-                    </div>
-                  </div>
+              {/* 2. Operators */}
+              <div className="flex-1 bg-transparent border-t-[3px] border-[#cccccc] p-8 lg:p-10 flex flex-col relative z-10 border-b border-white/5 lg:border-b-0 lg:border-r hover:bg-white/5 transition-colors">
+                <div className="w-[50px] h-[50px] rounded-full bg-[#cccccc]/10 flex items-center justify-center mb-8">
+                  <svg className="w-5 h-5 text-[#cccccc]" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v4H4zm0 8h16v4H4zm2-6h2v2H6zm0 8h2v2H6z" /></svg>
+                </div>
+                <div className="text-white text-[28px] font-bold mb-4">Operators</div>
+                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
+                  Secure the network and earn dual rewards. Run Validators, Scanners, or Relay Miners.
                 </div>
 
-                {/* Outbound connection lines (Forking UP and DOWN from Center) */}
-                {/* Top diagonal line */}
-                <div className="hidden xl:block absolute right-[-62px] top-1/2 w-[62px] h-[1.5px] bg-[#777777] transform rotate-[35deg] origin-left z-0"></div>
-                {/* Bottom diagonal line */}
-                <div className="hidden xl:block absolute right-[-62px] top-1/2 w-[62px] h-[1.5px] bg-[#777777] transform rotate-[-35deg] origin-left z-0"></div>
+                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
+                  <div><span className="text-[#cccccc]">$</span> 70% Relay Rewards</div>
+                  <div><span className="text-[#cccccc]">$</span> 30% Scanner Rewards</div>
+                </div>
 
-                {/* Note: since elements origin from left, a positive rotation angles downwards. Negative angles upwards. We swapped them if needed, but rotate-[35deg] visually goes DOWN, rotate-[-35deg] goes UP relative to right-facing vectors. */}
+                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                  Run a Node
+                </button>
+
+                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center gap-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M5 9h4v12H5zm7-5h4v17h-4zm7 8h4v9h-4z" /></svg>
+                  Subnet Stats
+                </div>
               </div>
 
-              {/* gap for the branching lines */}
-              <div className="hidden xl:block w-[50px] shrink-0 relative z-0"></div>
-
-              {/* 3. Right Blocks Column */}
-              <div className="flex flex-col gap-4 xl:gap-4 shrink-0 w-full sm:w-[320px] xl:w-[300px]">
-
-                {/* Top: 30% Protocol Treasury */}
-                <div className="bg-black/20 backdrop-blur-md shadow-inner border border-[#444444] border-l-[3px] border-l-[#cccccc] rounded-[8px] p-5 shadow-[0_0_20px_rgba(204,204,204,0.06)] relative z-10 w-full overflow-hidden hover:bg-white/5 transition-colors">
-                  <div className="absolute inset-0 border border-[#cccccc]/[0.05] rounded-[8px] pointer-events-none"></div>
-                  <div className="text-[48px] font-bold text-[#cccccc] leading-none mb-1 mt-0.5 drop-shadow-[0_0_15px_rgba(204,204,204,0.3)]">30%</div>
-                  <div className="text-white type-body xl:type-subtitle mb-2">Protocol Treasury</div>
-                  <div className="text-[#888] text-[11px] leading-relaxed mb-4 w-[95%]">
-                    Accumulates native assets (ETH, SOL, ATOM). Funds operations and growth.
-                  </div>
-
-                  <div className="inline-block bg-[#cccccc]/10 text-[#cccccc] text-[10px] px-2 py-1 rounded-[4px] font-bold">
-                    On-chain
-                  </div>
+              {/* 3. Community */}
+              <div className="flex-1 border-t-[3px] border-[#ffffff] p-8 lg:p-10 flex flex-col relative z-10 border-b lg:border-b-0 border-white/5 hover:bg-white/5 transition-colors">
+                <div className="w-[50px] h-[50px] rounded-full bg-[#222] flex items-center justify-center mb-8">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05.02.01.03.03.04.04 1.14.83 1.93 1.94 1.93 3.41V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" /></svg>
+                </div>
+                <div className="text-white text-[28px] font-bold mb-4">Community</div>
+                <div className="type-body text-[#888] leading-[1.7] mb-8 flex-grow">
+                  Join the conversation. Governance proposals, ecosystem updates, and support.
                 </div>
 
-                {/* Bottom: 70% Relay Reserve */}
-                <div className="bg-black/20 backdrop-blur-md shadow-inner border border-[#444444] border-l-[3px] border-l-[#cccccc] rounded-[8px] p-5 shadow-[0_0_20px_rgba(204,204,204,0.06)] relative z-10 w-full overflow-hidden hover:bg-white/5 transition-colors">
-                  <div className="absolute inset-0 border border-[#cccccc]/[0.05] rounded-[8px] pointer-events-none"></div>
-                  <div className="text-[48px] font-bold text-[#cccccc] leading-none mb-1 mt-0.5 drop-shadow-[0_0_15px_rgba(204,204,204,0.3)]">70%</div>
-                  <div className="text-white type-body xl:type-subtitle mb-2">Relay Reserve</div>
-                  <div className="text-[#888] text-[11px] leading-relaxed mb-4 w-[95%]">
-                    Direct rewards for Relay Miners who successfully execute transactions.
-                  </div>
-
-                  <div className="inline-block bg-[#cccccc]/10 text-[#cccccc] text-[10px] px-2 py-1 rounded-[4px] font-bold">
-                    Miner Reward
-                  </div>
+                <div className="text-[11px] text-[#777] leading-[1.8] mb-8">
+                  <div><span className="text-white">#</span> announcements</div>
+                  <div><span className="text-white">#</span> governance</div>
                 </div>
 
+                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                  Join Discord
+                </button>
+
+                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center text-center">
+                  Follow Us
+                </div>
               </div>
+
             </div>
           </div>
         </section>
