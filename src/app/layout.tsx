@@ -5,8 +5,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Data Universe | Bittensor Subnet',
-  description: 'The quantum entanglement of the cosmos. A bittensor subnet visualization.',
+  title: 'Entangle Protocol',
+  description: 'The infrastructure layer cross-chain commerce has been waiting for.',
 };
 
 export default function RootLayout({

@@ -178,24 +178,26 @@ export default function Home() {
         <Scene />
       </div>
 
-      <header className="fixed top-0 inset-x-0 mx-auto z-50 flex items-center justify-between py-4 px-6 md:px-12 pointer-events-auto bg-[#020205]/40 backdrop-blur-md border-b border-white/5 shadow-sm">
-        <div className="flex items-center gap-3">
+      <header className="fixed top-0 inset-x-0 mx-auto z-50 flex items-center justify-between py-3 px-6 md:px-12 pointer-events-auto bg-[#020205]/40 backdrop-blur-md border-b border-white/5 shadow-sm">
+        <div className="flex items-center gap-2.5">
           <Image
             src={logoImg}
             alt="Entangle Protocol Logo"
-            width={56}
-            height={56}
+            width={44}
+            height={44}
             className="object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.18)]"
             priority
           />
-          <span className="font-light text-lg lowercase text-gray-200">entangle protocol</span>
+          <span className="font-light text-base lowercase text-gray-200">entangle protocol</span>
         </div>
 
-        <button
-          className="px-6 py-2 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-        >
-          Whitepaper
-        </button>
+        <a href="https://entangle-protocol-docs.vercel.app/entangle-whitepaper.pdf" target="_blank" rel="noopener noreferrer">
+          <button
+            className="px-5 py-2 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+          >
+            Whitepaper
+          </button>
+        </a>
       </header>
 
       <div className="relative z-10 w-full flex flex-col pb-0">
@@ -213,14 +215,15 @@ export default function Home() {
                 onClick={() => scrollTo('developers')}
                 className="px-8 py-3.5 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)]"
               >
-                Start Building
+                GitHub
               </button>
-              <button
-                onClick={() => scrollTo('operators')}
-                className="px-8 py-3.5 bg-black/40 backdrop-blur-md border border-white/30 text-white font-medium rounded-full hover:bg-white/20 transition-all text-sm shadow-xl"
-              >
-                Start Earning
-              </button>
+              <a href="https://entangle-protocol-docs.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <button
+                  className="px-8 py-3.5 bg-black/40 backdrop-blur-md border border-white/30 text-white font-medium rounded-full hover:bg-white/20 transition-all text-sm shadow-xl"
+                >
+                  Docs
+                </button>
+              </a>
             </div>
           </motion.div>
         </section>
@@ -340,34 +343,21 @@ export default function Home() {
 
 
 
-            <div className="flex flex-col items-center text-center w-full relative z-10 mb-6 pt-3">
-              <h2 className="type-title mb-2 text-metallic-premium drop-shadow-2xl">
-                It&apos;s Live
+            <div className="flex flex-col items-center justify-center text-center w-full relative z-10 mb-8 pt-3">
+              <h2 className="type-title mb-2 w-full text-center text-metallic-premium drop-shadow-2xl">
+                Live Performance
               </h2>
             </div>
 
-            {/* Top Metrics Row */}
-            <div className="relative z-10 flex flex-col md:flex-row gap-4 mb-8 w-full max-w-[950px] mx-auto">
-              {/* 8.3s */}
-              <div className="flex-1 border-l-[3px] border-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors p-5 shadow-lg">
-                <div className="text-[44px] font-bold text-[#cccccc] leading-none mb-2 drop-shadow-[0_0_15px_rgba(204,204,204,0.2)] mt-1">8.3s</div>
-                <div className="text-[#888] type-label mb-1 font-semibold">Fastest Delivery</div>
-                <div className="text-[#555] type-label leading-relaxed">Solana &rarr; Arbitrum</div>
-              </div>
-
-              {/* 8/8 */}
-              <div className="flex-1 border-l-[3px] border-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors p-5 shadow-lg">
-                <div className="text-[44px] font-bold text-[#cccccc] leading-none mb-2 drop-shadow-[0_0_15px_rgba(204,204,204,0.2)] mt-1">8/8</div>
-                <div className="text-[#888] type-label mb-1 font-semibold">Consecutive Runs</div>
-                <div className="text-[#555] type-label leading-relaxed">100% Success Rate</div>
-              </div>
-
-              {/* 213K */}
-              <div className="flex-1 border-l-[3px] border-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors p-5 shadow-lg">
-                <div className="text-[44px] font-bold text-[#cccccc] leading-none mb-2 drop-shadow-[0_0_15px_rgba(204,204,204,0.2)] mt-1">213K</div>
-                <div className="text-[#888] type-label mb-1 font-semibold">Gas Used</div>
-                <div className="text-[#555] type-label leading-relaxed">Reference Delivery</div>
-              </div>
+            {/* Delivery Benchmarks inserted into Live Performance section with ORIGINAL design */}
+            <div className="relative z-10 flex flex-col md:flex-row gap-4 mb-8 w-full max-w-[950px] mx-auto text-left">
+              {deliveryBenchmarks.map(([value, title, subtitle]) => (
+                <div key={title} className="flex-1 border-l-[3px] border-[#cccccc] bg-black/20 backdrop-blur-md shadow-inner hover:bg-white/5 transition-colors p-5 shadow-lg">
+                  <div className="text-[44px] font-bold text-[#cccccc] leading-none mb-2 drop-shadow-[0_0_15px_rgba(204,204,204,0.2)] mt-1">{value}</div>
+                  <div className="text-[#888] type-label mb-1 font-semibold uppercase">{title}</div>
+                  {subtitle ? <div className="text-[#555] type-label leading-relaxed">{subtitle}</div> : null}
+                </div>
+              ))}
             </div>
 
             {/* Main Reference Run Container */}
@@ -585,34 +575,13 @@ export default function Home() {
           </section>
         )}
 
-        <section className="my-24 md:my-32 px-6 md:px-12 max-w-7xl mx-auto w-full relative z-10">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="surface-glass-strong p-6 md:p-8 rounded-[2rem]">
-            <div className="relative text-center w-full z-10 mb-10">
-              <div className="inline-block">
-                <div className="type-title text-metallic-premium text-center drop-shadow-2xl">Delivery Benchmarks</div>
-              </div>
-            </div>
-            <div className="grid md:grid-cols-3 gap-5">
-              {deliveryBenchmarks.map(([value, title, subtitle]) => (
-                <div key={title} className="rounded-[2rem] border border-white/5 bg-black/20 backdrop-blur-md shadow-inner px-8 py-10 transition-colors hover:bg-white/5">
-                  <div className="type-title text-white mb-5">{value}</div>
-                  <div className="type-body text-gray-300 mb-2 font-medium">{title}</div>
-                  {subtitle ? <div className="type-label text-gray-400 mt-2">{subtitle}</div> : null}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </section>
 
         <section id="protocol-flow" className="w-full relative z-10 my-24 md:my-32 px-6">
           <div className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
 
             <div className="flex flex-col items-center text-center w-full relative z-10 mb-10 pt-4">
-              <div className="type-label text-[#888] mb-4 uppercase tracking-widest">
-                Protocol Flow
-              </div>
               <h2 className="type-title mb-2 text-metallic-premium drop-shadow-2xl">
-                Three steps. Fully autonomous.
+                Three steps - Fully autonomous
               </h2>
             </div>
 
@@ -695,24 +664,18 @@ export default function Home() {
         {/* Competition Table Section */}
         <section id="competition" className="w-full relative z-10 my-24 md:my-32 px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
-            
+
             {/* Header */}
-            <div className="flex flex-col items-center text-center w-full relative z-10 mb-10 pt-4">
-              <div className="type-label text-[#888] mb-4 uppercase tracking-widest">
-                Compare
-              </div>
-              <h2 className="type-title mb-4 text-metallic-premium drop-shadow-2xl">
-                The only relay network with real competition.
+            <div className="flex flex-col items-center text-center w-full relative z-10 mb-8 pt-4">
+              <h2 className="type-title text-metallic-premium drop-shadow-2xl">
+                The only relay network with real competition
               </h2>
-              <p className="type-body text-[#888] max-w-2xl mx-auto">
-                Existing bridges use trusted relayer sets — fixed operators with no economic pressure to improve. Entangle's Bittensor-native competition changes this fundamental dynamic.
-              </p>
             </div>
 
             {/* Inner Table Container */}
             <div className="border border-white/5 rounded-[12px] bg-black/20 backdrop-blur-md shadow-inner overflow-x-auto relative z-10 p-6 md:p-8">
               <div className="min-w-[800px] relative">
-                
+
                 {/* Shiny Highlight behind Entangle column (33% to 50% width) */}
                 <div className="absolute top-10 bottom-10 left-[31%] w-[20%] bg-white/[0.06] blur-[60px] rounded-full pointer-events-none z-0"></div>
 
@@ -743,27 +706,27 @@ export default function Home() {
                     ].map((row, i) => (
                       <div key={i} className={`grid grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-4 py-5 hover:bg-white/[0.02] transition-colors items-center text-[13px] ${i !== 7 ? 'border-b border-white/[0.03]' : ''}`}>
                         <div className="text-white font-medium pl-2 tracking-wide">{row.f}</div>
-                        
+
                         <div className="text-white font-medium flex items-center gap-3 tracking-wide drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
                           {row.e === "check" && <svg className="w-[16px] h-[16px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>}
                           {row.e === "gas" && <><svg className="w-[16px] h-[16px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> No gas waste</>}
-                        {row.e === "fee" && <><svg className="w-[16px] h-[16px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> Fee flywheel</>}
-                        {row.e === "scan" && <><svg className="w-[16px] h-[16px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> Scanner miners</>}
-                        {row.e !== "check" && row.e !== "gas" && row.e !== "fee" && row.e !== "scan" && row.e}
-                      </div>
+                          {row.e === "fee" && <><svg className="w-[16px] h-[16px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> Fee flywheel</>}
+                          {row.e === "scan" && <><svg className="w-[16px] h-[16px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> Scanner miners</>}
+                          {row.e !== "check" && row.e !== "gas" && row.e !== "fee" && row.e !== "scan" && row.e}
+                        </div>
 
-                      <div className="text-[#666] font-medium tracking-wide">
-                        {row.w === "cross" ? <svg className="w-[13px] h-[13px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> : row.w}
+                        <div className="text-[#666] font-medium tracking-wide">
+                          {row.w === "cross" ? <svg className="w-[13px] h-[13px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> : row.w}
+                        </div>
+                        <div className="text-[#666] font-medium tracking-wide">
+                          {row.l === "cross" ? <svg className="w-[13px] h-[13px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> : row.l}
+                        </div>
+                        <div className="text-[#666] font-medium tracking-wide">
+                          {row.a === "cross" ? <svg className="w-[13px] h-[13px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> : row.a}
+                        </div>
                       </div>
-                      <div className="text-[#666] font-medium tracking-wide">
-                        {row.l === "cross" ? <svg className="w-[13px] h-[13px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> : row.l}
-                      </div>
-                      <div className="text-[#666] font-medium tracking-wide">
-                        {row.a === "cross" ? <svg className="w-[13px] h-[13px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> : row.a}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
                 </div>
 
               </div>
@@ -776,14 +739,11 @@ export default function Home() {
         {/* Protocol Properties Section */}
         <section className="w-full relative z-10 my-24 md:my-32 px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="surface-glass-strong p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl relative max-w-[1100px] mx-auto w-full overflow-hidden">
-            
+
             {/* Header */}
             <div className="flex flex-col items-center text-center w-full relative z-10 mb-10 pt-4">
-              <div className="type-label text-[#888] mb-4 uppercase tracking-widest">
-                Protocol Properties
-              </div>
-              <h2 className="type-title mb-4 text-metallic-premium drop-shadow-2xl uppercase">
-                Built for <br className="hidden md:block"/> Permanent Infrastructure.
+              <h2 className="type-title mb-4 text-metallic-premium drop-shadow-2xl">
+                Built for Permanent Infrastructure
               </h2>
             </div>
 
@@ -813,7 +773,7 @@ export default function Home() {
                 {
                   title: "BITTENSOR-NATIVE",
                   desc: "Built as a Bittensor subnet — scoring is governed by Yuma Consensus, not a team. TAO emissions reward genuine performance. The incentive mechanism is decentralized, auditable, and cannot be gamed by the protocol team.",
-                  icon: <svg className="w-[18px] h-[18px] text-[#cccccc]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                  icon: <svg className="w-[18px] h-[18px] text-[#cccccc]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>
                 },
                 {
                   title: "FAILSAFE DELIVERY",
@@ -1748,9 +1708,11 @@ export default function Home() {
                   <div><span className="text-[#cccccc]">&gt;</span> import {'{'} Entangle {'}'}</div>
                 </div>
 
-                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                  Read the Docs
-                </button>
+                <a href="https://entangle-protocol-docs.vercel.app/" target="_blank" rel="noopener noreferrer" className="block w-full">
+                  <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    Read the Docs
+                  </button>
+                </a>
 
                 <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center gap-2">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.699-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" /></svg>
@@ -1798,13 +1760,15 @@ export default function Home() {
                   <div><span className="text-white">#</span> governance</div>
                 </div>
 
-                <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                  Join Discord
-                </button>
+                <a href="https://discord.gg/CMWKzW8y" target="_blank" rel="noopener noreferrer" className="block w-full">
+                  <button className="w-full bg-white hover:bg-gray-200 text-black font-bold type-label py-4 px-4 rounded-[4px] transition-colors mb-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    Join Discord
+                  </button>
+                </a>
 
-                <div className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center text-center">
+                <a href="https://x.com/webuildentangle" target="_blank" rel="noopener noreferrer" className="text-[#888] type-label hover:text-white cursor-pointer transition-colors flex items-center justify-center text-center">
                   Follow Us
-                </div>
+                </a>
               </div>
 
             </div>
@@ -1953,7 +1917,9 @@ export default function Home() {
             The infrastructure layer cross-chain<br />commerce has been waiting for.
           </p>
           <div className="flex gap-4 mb-24">
-            <button className="px-10 py-4 bg-white text-black font-bold text-base rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:scale-105 active:scale-95 duration-200">Launch App</button>
+            <a href="https://discord.gg/CMWKzW8y" target="_blank" rel="noopener noreferrer">
+              <button className="px-10 py-4 bg-white text-black font-bold text-base rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:scale-105 active:scale-95 duration-200">Discord</button>
+            </a>
           </div>
 
           <div className="flex flex-wrap justify-center gap-10 type-body text-gray-300 font-semibold w-full border-t border-white/20 pt-12 max-w-5xl drop-shadow-sm">
@@ -1961,7 +1927,7 @@ export default function Home() {
             <span className="hover:text-white cursor-pointer transition-colors shadow-sm">Validate</span>
             <span className="hover:text-white cursor-pointer transition-colors shadow-sm">Build</span>
             <span className="hover:text-white cursor-pointer transition-colors shadow-sm">GitHub</span>
-            <span className="hover:text-white cursor-pointer transition-colors shadow-sm">Discord</span>
+            <a href="https://x.com/webuildentangle" target="_blank" rel="noopener noreferrer" className="hover:text-white cursor-pointer transition-colors shadow-sm">Twitter / X</a>
           </div>
         </section>
       </div>
